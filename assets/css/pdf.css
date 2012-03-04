@@ -1,0 +1,28 @@
+body.pdf {
+    .container {
+        width: 1000px;
+        margin: 0 auto;
+        padding: 0;
+        background: none;
+        border: none;
+        border-width: 8px 0 2px 0;
+        text-align: left;
+    }
+    
+    .resume {
+        position:relative;
+        padding: 40px 80px;
+    }
+
+    a[href$='.pdf'] {
+        display: none;
+    }
+
+    h1 {
+        letter-spacing: 0;
+    }
+    h2 {
+        letter-spacing: 0;
+    }
+
+}

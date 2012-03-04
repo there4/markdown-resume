@@ -9,11 +9,13 @@
 	}
 }
 
-
 body {
-    font-family: Georgia;
+    font-family: Garamond, "Hoefler Text", Times New Roman, Times, serif;
     color: #444;
     padding: 2em 0;
+}
+h1, h2, h3, h4, ul dl dt {
+    font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
 }
 
 .container {
@@ -46,7 +48,7 @@ a[href$='.pdf'] {
 
 blockquote {
     top: 0;
-    right: 0;
+    right: 40px;
     position: absolute;
 }
 
@@ -83,7 +85,7 @@ h2 {
 
 h3 {
     float: left;
-    width: 25%;
+    width: 16%;
     margin: 0;
     padding: 0;
     font-style: italic;
@@ -93,7 +95,7 @@ h3 {
 h3+p {
     margin: 0 0 16px; padding: 0;
     float: left;
-    width: 75%;
+    width: 84%;
     display: block;
     font-size: 104%;
     line-height: 24px;
@@ -106,7 +108,7 @@ ul {
     list-style: none;
 }
 ul li {
-    width: 25%;
+    width: 28%;
     margin: 0;
     padding: 0;
     float: left;
@@ -121,7 +123,7 @@ ul dl {
     }
     dd {
         margin: 0 0 1em;
-        padding: .5em 3em 0 0;
+        padding: .5em 2em 0 0;
         font-size: .8em;
         line-height: 1.5em;
     }
@@ -130,7 +132,7 @@ ul dl {
 ol {
     margin: 0;
     padding: 0;
-    width: 75%;
+    width: 84%;
     display: inline-block;
 }
 
@@ -144,23 +146,29 @@ ol li {
     line-height: 24px;
     font-size: 14px;
 }
+ol li:nth-child(3n) {
+    width: 34%;
+}
 
 ol li:nth-child(1), ol li:nth-child(2), ol li:nth-child(3) {
     border-top: none;
 }
 
-
-
 dl {
     display: inline-block;
     width: 75%;
+    margin: 0;
+    padding: 0;
     dt {
+        margin: 0;
+        padding: 0;
         font-size: 150%;
     }
     dd {
         margin: 0 0 1.5em;
         padding: 0;
         font-size: 80%;
+        line-height: 1.4em;
     }
     strong {
         float: right;
@@ -173,4 +181,15 @@ dl {
         font-style: normal;
     }
     
+}
+
+
+#footer {
+    display: none;
+}
+
+#footer + p {
+    width: 100%;
+    font-size: 11px;
+    text-align: center;
 }

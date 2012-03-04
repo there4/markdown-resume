@@ -29,31 +29,38 @@ use Assetic\Asset\GlobAsset;
 use Assetic\Filter;
 
 $shortopts  = "";
-$shortopts .= "r";
+$shortopts .= "s:";
+$shortopts .= "rp";
 
 $longopts  = array(
-    "refresh"
+    "source:",
+    "refresh",
+    "pdf"
 );
 $options = getopt($shortopts, $longopts);
 
-$refresh_dev = isset($options['r']) || isset($options['refresh']);
+if (!isset($options['s'])) {
+    exit('Please specify a source document  build.php -s resume.pdf');
+}
 
+$basename     = pathinfo($options['s'], PATHINFO_FILENAME);
+$source       = './resume/' . $options['s'];
+$pdf_source   = './output/' . $basename . '-pdf.html';
+$output       = './output/' . $basename . '.html';
+$pdf_output   = './output/' . $basename . '.pdf';
+
+
+$refresh_dev = isset($options['r']) || isset($options['refresh']);
 
 $css = new AssetCollection(
     array(
-        //new FileAsset('/path/to/src/styles.less', array(new LessFilter())),
         new GlobAsset(APPLICATION_BASE_PATH . '/assets/css/*.css')
     ),
     array(
         new Filter\LessphpFilter(),
     )
 );
-
-
-
-// the code is merged when the asset is dumped
 $style = $css->dump();
-
 
 $template = file_get_contents(APPLICATION_BASE_PATH . '/assets/templates/default.html');
 $resume   = file_get_contents(APPLICATION_BASE_PATH . '/resume/resume.md');
@@ -80,9 +87,33 @@ $rendered = $m->render(
 );
 
 file_put_contents(
-    APPLICATION_BASE_PATH . '/resume/resume.html',
+    APPLICATION_BASE_PATH . '/output/resume.html',
     $rendered
 );
+
+
+$pdf_classed = str_replace(
+    'body class=""',
+    'body class="pdf"',
+    $rendered
+);
+
+if (isset($options['pdf'])) {
+    file_put_contents(
+        $pdf_source,
+        $pdf_classed
+    );
+
+    exec(
+        'wkhtmltopdf '
+        . $pdf_source .' '
+        . $pdf_output
+        . ' && open ' . $pdf_output
+    );
+    
+    //unlink(APPLICATION_BASE_PATH . '/resume/resume-pdf.html');
+}
+
 
 
 /* End of file build.php */

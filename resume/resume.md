@@ -53,3 +53,9 @@ International Business Machines (IBM)
   Globally re-engineer cross-media schemas through viral methods of empowerment. Proactively grow long-term high-impact human capital and highly efficient innovation. Intrinsicly iterate excellent e-tailers with timely e-markets.
 
 ------
+
+### Footer {#footer}
+
+Craig Davis -- [craig@there4development.com](craig@there4development.com) -- (999) 888-7777
+
+------
