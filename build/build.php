@@ -63,7 +63,7 @@ $css = new AssetCollection(
 $style = $css->dump();
 
 $template = file_get_contents(APPLICATION_BASE_PATH . '/assets/templates/default.html');
-$resume   = file_get_contents(APPLICATION_BASE_PATH . '/resume/resume.md');
+$resume   = file_get_contents($source);
 
 $resume = Markdown($resume);
 $resume = SmartyPants($resume);
@@ -87,7 +87,7 @@ $rendered = $m->render(
 );
 
 file_put_contents(
-    APPLICATION_BASE_PATH . '/output/resume.html',
+    $output,
     $rendered
 );
 
