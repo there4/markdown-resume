@@ -10,7 +10,7 @@
 }
 
 body {
-    font-family: Garamond, "Hoefler Text", Times New Roman, Times, serif;
+    font-family: 'Hoefler Text', Times New Roman, Times, serif;
     color: #444;
     padding: 2em 0;
 }
@@ -172,7 +172,7 @@ dl {
     }
     strong {
         float: right;
-        margin-top: -3em;
+        margin-top: -2em;
     }
     em {
         display: block;
