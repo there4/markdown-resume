@@ -1,1 +1,176 @@
-body { font-family: Georgia; color: #444; }
+.clearfix {
+  zoom: 1;
+	&:after {
+    display: block;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+    content: ".";
+	}
+}
+
+
+body {
+    font-family: Georgia;
+    color: #444;
+    padding: 2em 0;
+}
+
+.container {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 0;
+    background: whiteSmoke;
+    border: solid #666;
+    border-width: 8px 0 2px 0;
+    text-align: left;
+}
+
+.resume {
+    position:relative;
+    padding: 40px 80px;
+}
+
+a {
+    color: #990003;
+}
+
+a[href$='.pdf'] {
+    display: inline-block;
+    background: #666;
+    color: white;
+    padding: 6px 50px 6px 12px;
+    margin-bottom: 6px;
+    text-decoration: none;
+}
+
+blockquote {
+    top: 0;
+    right: 0;
+    position: absolute;
+}
+
+hr {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 18px auto;
+    width: 100%;
+    clear: both;
+    border: none;
+    border-top: 1px solid #CCC;
+    font-size: 1px;
+    line-height: 0;
+    overflow: visible;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 48px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: normal;
+}
+h2 {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: 2px;
+    font-weight: normal;
+}
+
+h3 {
+    float: left;
+    width: 25%;
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+    font-weight: normal;
+}
+
+h3+p {
+    margin: 0 0 16px; padding: 0;
+    float: left;
+    width: 75%;
+    display: block;
+    font-size: 104%;
+    line-height: 24px;
+}
+
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ul li {
+    width: 25%;
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+ul dl {
+    margin: 0;
+    padding: 0;
+    dt {
+        font-size: 122%;
+        margin-bottom: .25em;
+    }
+    dd {
+        margin: 0 0 1em;
+        padding: .5em 3em 0 0;
+        font-size: .8em;
+        line-height: 1.5em;
+    }
+}
+
+ol {
+    margin: 0;
+    padding: 0;
+    width: 75%;
+    display: inline-block;
+}
+
+ol li {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #CCCCCC;
+    width: 33%;
+    float: left;
+    list-style: none;
+    line-height: 24px;
+    font-size: 14px;
+}
+
+ol li:nth-child(1), ol li:nth-child(2), ol li:nth-child(3) {
+    border-top: none;
+}
+
+
+
+dl {
+    display: inline-block;
+    width: 75%;
+    dt {
+        font-size: 150%;
+    }
+    dd {
+        margin: 0 0 1.5em;
+        padding: 0;
+        font-size: 80%;
+    }
+    strong {
+        float: right;
+        margin-top: -3em;
+    }
+    em {
+        display: block;
+        font-size: 130%;
+        margin-bottom: .5em;
+        font-style: normal;
+    }
+    
+}

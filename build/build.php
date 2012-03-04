@@ -20,6 +20,8 @@ include_once APPLICATION_BASE_PATH . '/vendor/Mustache/Mustache.php';
 include_once APPLICATION_BASE_PATH . '/vendor/smartypants/smartypants.php';
 include_once APPLICATION_BASE_PATH . '/vendor/markdown-extra/markdown.php';
 include_once APPLICATION_BASE_PATH . '/vendor/lessphp/lessc.inc.php';
+include_once APPLICATION_BASE_PATH . '/vendor/simpledom/simple_html_dom.php';
+
 
 use Assetic\Asset\AssetCollection;
 use Assetic\Asset\FileAsset;
@@ -56,15 +58,21 @@ $style = $css->dump();
 $template = file_get_contents(APPLICATION_BASE_PATH . '/assets/templates/default.html');
 $resume   = file_get_contents(APPLICATION_BASE_PATH . '/resume/resume.md');
 
-
 $resume = Markdown($resume);
 $resume = SmartyPants($resume);
 
+$html = str_get_html($resume);
+$title = sprintf(
+    '%s | %s',
+    $html->find('h1', 0)->innertext,
+    $html->find('h2', 0)->innertext
+);
+    
 $m = new Mustache;
 $rendered = $m->render(
     $template,
     array(
-        'title'  => 'TITLE',
+        'title'  => $title,
         'style'  => $style,
         'resume' => $resume,
         'reload' => $refresh_dev
