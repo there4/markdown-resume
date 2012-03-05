@@ -32,9 +32,12 @@
         padding: 2em 0;
     }
     blockquote {
-        top: 40px;
+        top: 10px;
         right: 50px;
         position: absolute;
+    }
+    h1 { /* Open up the top section height so we don't collapse on the blockquote */
+        margin-top: .5em;
     }
     ol {
         margin: 0 0 0 1em;
@@ -63,7 +66,13 @@
         position:relative;
         padding: 40px 50px;
     }
+    blockquote {
+        top: 40px;
+        right: 50px;
+        position: absolute;
+    }
     h1 {
+        margin-top: 0;
         font-size: 48px;
         text-transform: uppercase;
         letter-spacing: 3px;
