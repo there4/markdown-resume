@@ -39,7 +39,7 @@ a[href$='.pdf'] {
     display: inline-block;
     background: #666;
     color: white;
-    padding: 6px 50px 6px 12px;
+    padding: 6px 12px;
     margin-bottom: 6px;
     text-decoration: none;
 }
