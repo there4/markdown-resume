@@ -1,25 +1,23 @@
 .clearfix {
   zoom: 1;
 	&:after {
-    display: block;
-    visibility: hidden;
-    height: 0;
-    clear: both;
-    content: ".";
-	}
+        display: block;
+        visibility: hidden;
+        height: 0;
+        clear: both;
+        content: ".";
+    }
 }
 
 body {
     font-family: 'Hoefler Text', Times New Roman, Times, serif;
     color: #444;
-    padding: 2em 0;
 }
 h1, h2, h3, h4, ul dl dt {
     font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
 }
 
 .container {
-    width: 1000px;
     margin: 0 auto;
     padding: 0;
     background: whiteSmoke;
@@ -30,7 +28,7 @@ h1, h2, h3, h4, ul dl dt {
 
 .resume {
     position:relative;
-    padding: 40px 80px;
+    padding: 10px 20px;
 }
 
 a {
@@ -47,9 +45,9 @@ a[href$='.pdf'] {
 }
 
 blockquote {
-    top: 0;
-    right: 40px;
-    position: absolute;
+    margin: 0;
+    padding: 0;
+    line-height: 1.4em;
 }
 
 hr {
@@ -69,33 +67,30 @@ hr {
 h1 {
     margin: 0;
     padding: 0;
-    font-size: 48px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+    font-size: 36px;
+    letter-spacing: -1px;
     font-weight: normal;
 }
 h2 {
     margin: 0;
     padding: 0;
-    text-transform: uppercase;
+    font-size: 18px;
     font-style: italic;
-    letter-spacing: 2px;
+    letter-spacing: -1px;
     font-weight: normal;
 }
 
 h3 {
-    float: left;
-    width: 16%;
     margin: 0;
     padding: 0;
+    font-size: 150%;
     font-style: italic;
     font-weight: normal;
 }
 
 h3+p {
-    margin: 0 0 16px; padding: 0;
-    float: left;
-    width: 84%;
+    margin: 0 0 16px;
+    padding: 0;
     display: block;
     font-size: 104%;
     line-height: 24px;
@@ -108,22 +103,20 @@ ul {
     list-style: none;
 }
 ul li {
-    width: 28%;
     margin: 0;
     padding: 0;
-    float: left;
 }
 
 ul dl {
     margin: 0;
     padding: 0;
+    width: 100%;
     dt {
-        font-size: 122%;
-        margin-bottom: .25em;
+        font-size: 100%;
     }
     dd {
         margin: 0 0 1em;
-        padding: .5em 2em 0 0;
+        padding: 0 2em 0 0;
         font-size: .8em;
         line-height: 1.5em;
     }
@@ -137,20 +130,16 @@ ol {
 }
 
 ol li {
-    margin: 0;
+    margin: 0 0 0 1em;
     padding: 0;
     border-top: 1px solid #CCCCCC;
-    width: 33%;
+    width: 100%;
     float: left;
     list-style: none;
     line-height: 24px;
     font-size: 14px;
 }
-ol li:nth-child(3n) {
-    width: 34%;
-}
-
-ol li:nth-child(1), ol li:nth-child(2), ol li:nth-child(3) {
+ol li:nth-child(1) {
     border-top: none;
 }
 
@@ -171,14 +160,13 @@ dl {
         line-height: 1.4em;
     }
     strong {
-        float: right;
-        margin-top: -2em;
+        display: block;
     }
     em {
         display: block;
-        font-size: 130%;
+        font-size: 110%;
         margin-bottom: .5em;
-        font-style: normal;
+        font-style: bold;
     }
     
 }
