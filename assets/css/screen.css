@@ -18,7 +18,6 @@
 */
 
 @media screen and (min-width: 30em) {
-
 }
 
 
@@ -31,6 +30,11 @@
 @media screen and (min-width: 37.5em) {
     body {
         padding: 2em 0;
+    }
+    blockquote {
+        top: 40px;
+        right: 50px;
+        position: absolute;
     }
     ol {
         margin: 0 0 0 1em;
@@ -53,11 +57,11 @@
 
 @media screen and (min-width: 57em) {
     .container {
-        width: 1000px;
+        width: 912px;
     }
     .resume {
         position:relative;
-        padding: 40px 80px;
+        padding: 40px 50px;
     }
     h1 {
         font-size: 48px;
@@ -70,12 +74,6 @@
         font-style: italic;
         letter-spacing: 2px;
         font-weight: normal;
-    }
-    
-    blockquote {
-        top: 0;
-        right: 40px;
-        position: absolute;
     }
     
     h3 {
