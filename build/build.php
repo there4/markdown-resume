@@ -39,6 +39,11 @@ $longopts  = array(
 );
 $options = getopt($shortopts, $longopts);
 
+// Combine the options to their shorter names
+if (empty($options['s']) && !empty($options['source'])) {
+    $options['s'] = $options['source'];
+}
+
 if (!isset($options['s'])) {
     exit('Please specify a source document  build.php -s resume.pdf');
 }
@@ -90,6 +95,7 @@ file_put_contents(
     $output,
     $rendered
 );
+echo "Wrote html to $output\n";
 
 
 $pdf_classed = str_replace(
@@ -111,7 +117,8 @@ if (isset($options['pdf'])) {
         . ' && open ' . $pdf_output
     );
     
-    //unlink(APPLICATION_BASE_PATH . '/resume/resume-pdf.html');
+    unlink($pdf_source);
+    echo "Wrote pdf to $pdf_output\n";
 }
 
 
