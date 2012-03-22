@@ -1,5 +1,6 @@
 body.pdf {
     color: black;
+    
     a {
         text-decoration: none;
         color: black;
@@ -25,9 +26,25 @@ body.pdf {
 
     h1 {
         letter-spacing: 0;
+        margin-top: 0;
+        font-size: 48px;
+        text-transform: uppercase;
+        font-weight: normal;
     }
     h2 {
         letter-spacing: 0;
+        text-transform: uppercase;
+        font-style: italic;
+        font-weight: normal;
+    }
+    h3 {
+        float: left;
+        width: 16%;
+        font-style: normal;
+    }
+    h3+p {
+        float: left;
+        width: 84%;
     }
 
     blockquote {
@@ -35,37 +52,18 @@ body.pdf {
         right: 50px;
         position: absolute;
     }
-    h1 {
-        margin-top: 0;
-        font-size: 48px;
-        text-transform: uppercase;
-        font-weight: normal;
-    }
-    h2 {
-        text-transform: uppercase;
-        font-style: italic;
-        font-weight: normal;
-    }
-    
-    h3 {
-        float: left;
-        width: 16%;
-    }
-    
-    h3+p {
-        float: left;
-        width: 84%;
-    }
     
     ul li {
         width: 28%;
         float: left;
     }
     ul dl {
+        margin: 0;
+        padding: 0.3em 0 0;
         dt {
             font-size: 122%;
             font-weight: normal;
-            margin-bottom: .75em;
+            margin: 0 0 .75em;
         }
         dd {
             padding: 0 4em 0 0;
@@ -75,7 +73,7 @@ body.pdf {
     ol {
         float: left;
         width: 84%;
-        margin: .6em 0 0;
+        margin: .7em 0 0;
     }
 
     ol li {
@@ -90,7 +88,7 @@ body.pdf {
     }
     
     dl {
-        margin: .5em 0 0;
+        margin: .7em 0 0;
         dt {
         }
         dd {

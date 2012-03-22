@@ -62,6 +62,7 @@ hr {
     font-size: 1px;
     line-height: 0;
     overflow: visible;
+    page-break-after: avoid;
 }
 
 h1 {
@@ -82,7 +83,7 @@ h2 {
 
 h3 {
     margin: 0;
-    padding: 0;
+    padding: 0 0 .5em;
     font-size: 150%;
     font-style: italic;
     font-weight: normal;
@@ -124,7 +125,7 @@ ul dl {
 
 ol {
     margin: 0;
-    padding: 0;
+    padding: 0 0 .75em;
     width: 84%;
     display: inline-block;
 }
@@ -151,7 +152,7 @@ dl {
     dt {
         margin: 0;
         padding: 0;
-        font-size: 150%;
+        font-size: 140%;
     }
     dd {
         margin: 0 0 1.5em;
@@ -165,7 +166,7 @@ dl {
     em {
         display: block;
         font-size: 110%;
-        margin-bottom: .5em;
+        margin: .15em 0 .5em;
         font-style: bold;
     }
     
