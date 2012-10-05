@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Markdown Resume Builder by there4</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Markdown Resume Builder</h1>
+        <p>An elegant set of css rules for generating a resume with Markdown</p>
+
+        <p class="view"><a href="https://github.com/there4/markdown-resume">View the Project on GitHub <small>there4/markdown-resume</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/there4/markdown-resume/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/there4/markdown-resume/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/there4/markdown-resume">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Markdown Resume Styles</h1>
+
+<p>Turn a simple Markdown document into an elegant resume.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>PDF generation via <code>wkhtmltopdf</code>
+</li>
+<li>Responsive design for multiple device viewport sizes</li>
+<li>Simple Markdown formatting</li>
+<li>Single file deployment</li>
+<li>You can now version control and branch your resume.</li>
+</ul><h2>Quickstart</h2>
+
+<pre><code>php ./build/build.php --source sample.md
+php ./build/build.php --source sample.md --pdf
+</code></pre>
+
+<h2>Options</h2>
+
+<p>If you want to edit your markdown resume in your editor while watching it
+update in your browser, run this command:</p>
+
+<pre><code>watch php ./build/build.php -s sample.md -r
+</code></pre>
+
+<p>This makes the build script run periodically, and html document will refresh
+every two seconds. Open the <code>./ouput/sample.html</code> file in your browser, and
+then just save your markdown document when you want to see a fresh preview.</p>
+
+<h2>Development</h2>
+
+<p>Markdown is limited to basic html markup. Follow the <code>resume/sample.md</code> file 
+as a guideline. This file includes various headers and several nested elements.
+This allows us to construct a semantic HTML document for the resume, and then
+use a CSS rules to display a very nice resume. Note that because we have very
+few ways to nest or identify elements that many of the css rules are based
+on descendant and adjacent selectors. </p>
+
+<h2>Acknowledgments</h2>
+
+<p>The initial inspiration is from the <a href="http://sampleresumetemplate.net/">Sample Resume Template</a>.
+However, no HTML from that project has been used in this. General layout has been reused, and media queries
+have been added. It's a nice template, and if you are a more comfortable with html than markdown, you should use it.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/there4">there4</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-8504376-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
