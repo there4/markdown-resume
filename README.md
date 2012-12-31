@@ -12,15 +12,15 @@ Turn a simple Markdown document into an elegant resume.
 
 ## Quickstart
 
-    php ./build/build.php --source sample.md
-    php ./build/build.php --source sample.md --pdf
+    php ./build/build.php --source resume/sample.md
+    php ./build/build.php --source resume/sample.md --pdf
 
 ## Options
 
 If you want to edit your markdown resume in your editor while watching it
 update in your browser, run this command:
 
-    watch php ./build/build.php -s sample.md -r
+    watch php ./build/build.php -s resume/sample.md -r
     
 This makes the build script run periodically, and html document will refresh
 every two seconds. Open the `./ouput/sample.html` file in your browser, and
@@ -43,6 +43,8 @@ on descendant and adjacent selectors.
 
 ## Acknowledgments
 
-The initial inspiration is from the [Sample Resume Template](http://sampleresumetemplate.net/).
+The initial inspiration is from the [Sample Resume Template][srt].
 However, no HTML from that project has been used in this. General layout has been reused, and media queries
 have been added. It's a nice template, and if you are a more comfortable with html than markdown, you should use it.
+
+[srt]: http://sampleresumetemplate.net/ "A great starting point"
