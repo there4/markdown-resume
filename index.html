@@ -28,13 +28,10 @@
         </ul>
       </header>
       <section>
-        <h1>Markdown Resume Styles</h1>
-
-<p>Turn a simple Markdown document into an elegant resume.</p>
-
-<h2>Features</h2>
+        <h2>Features</h2>
 
 <ul>
+<li>Turn a simple Markdown document into an elegant resume.</li>
 <li>PDF generation via <code>wkhtmltopdf</code>
 </li>
 <li>Responsive design for multiple device viewport sizes</li>
@@ -43,8 +40,8 @@
 <li>You can now version control and branch your resume.</li>
 </ul><h2>Quickstart</h2>
 
-<pre><code>php ./build/build.php --source sample.md
-php ./build/build.php --source sample.md --pdf
+<pre><code>php ./build/build.php --source resume/sample.md
+php ./build/build.php --source resume/sample.md --pdf
 </code></pre>
 
 <h2>Options</h2>
@@ -52,12 +49,12 @@ php ./build/build.php --source sample.md --pdf
 <p>If you want to edit your markdown resume in your editor while watching it
 update in your browser, run this command:</p>
 
-<pre><code>watch php ./build/build.php -s sample.md -r
+<pre><code>watch php ./build/build.php -s resume/sample.md -r
 </code></pre>
 
-<p>This makes the build script run periodically, and html document will refresh
-every two seconds. Open the <code>./ouput/sample.html</code> file in your browser, and
-then just save your markdown document when you want to see a fresh preview.</p>
+<p>This makes the build script run when the file changes, and html document will
+refresh every two seconds. Open the <code>./ouput/sample.html</code> file in your browser,
+and then just save your markdown document when you want to see a fresh preview.</p>
 
 <h2>Development</h2>
 
