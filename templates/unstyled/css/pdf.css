@@ -1,0 +1,16 @@
+body.pdf {
+    color: black;
+    
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    .container {
+        width: 1000px;
+        margin: 0 auto;
+        padding: 0;
+        background: none;
+        border: none;
+        text-align: left;
+    }
+}

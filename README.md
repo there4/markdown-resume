@@ -1,6 +1,8 @@
-# Markdown Resume Styles
+# Markdown Resume Generator
 
-Turn a simple Markdown document into an elegant resume.
+Turn a simple Markdown document into an elegant resume with both a perfect
+pdf printable format, and a responsive css3 html5 file. You can view a sample
+at the [blog post for the project][blog].
 
 ## Features
 
@@ -12,19 +14,20 @@ Turn a simple Markdown document into an elegant resume.
 
 ## Quickstart
 
-    php ./build/build.php --source resume/sample.md
-    php ./build/build.php --source resume/sample.md --pdf
+    php ./bin/resume.php --source resume/sample.md
+    php ./bin/resume.php --source resume/sample.md --pdf
 
 ## Options
 
 If you want to edit your markdown resume in your editor while watching it
 update in your browser, run this command:
 
-    watch php ./build/build.php -s resume/sample.md -r
+    watch php ./bin/resume.php -s resume/sample.md -r
     
 This makes the build script run periodically, and html document will refresh
-every two seconds. Open the `./ouput/sample.html` file in your browser, and
-then just save your markdown document when you want to see a fresh preview.
+every two seconds via a meta tag. Open the `./ouput/sample.html` file in
+your browser, and then just save your markdown document when you want to see
+a fresh preview.
 
 ## Development
 
@@ -48,3 +51,4 @@ However, no HTML from that project has been used in this. General layout has bee
 have been added. It's a nice template, and if you are a more comfortable with html than markdown, you should use it.
 
 [srt]: http://sampleresumetemplate.net/ "A great starting point"
+[blog]: http://there4development.com/blog/2012/12/31/markdown-resume-builder/

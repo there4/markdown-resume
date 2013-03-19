@@ -1,0 +1,107 @@
+body.pdf {
+    color: black;
+    
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    .container {
+        width: 1000px;
+        margin: 0 auto;
+        padding: 0;
+        background: none;
+        border: none;
+        border-width: 8px 0 2px 0;
+        text-align: left;
+    }
+    
+    .resume {
+        position:relative;
+        padding: 40px 80px;
+    }
+
+    a[href$='.pdf'] {
+        display: none;
+    }
+
+    h1 {
+        letter-spacing: 0;
+        margin-top: 0;
+        font-size: 48px;
+        text-transform: uppercase;
+        font-weight: normal;
+    }
+    h2 {
+        letter-spacing: 0;
+        text-transform: uppercase;
+        font-style: italic;
+        font-weight: normal;
+    }
+    h3 {
+        float: left;
+        width: 16%;
+        font-style: normal;
+    }
+    h3+p {
+        float: left;
+        width: 84%;
+    }
+
+    blockquote {
+        top: 40px;
+        right: 50px;
+        position: absolute;
+    }
+    
+    ul li {
+        width: 28%;
+        float: left;
+    }
+    ul dl {
+        margin: 0;
+        padding: 0.3em 0 0;
+        dt {
+            font-size: 122%;
+            font-weight: normal;
+            margin: 0 0 .75em;
+        }
+        dd {
+            padding: 0 4em 0 0;
+        }
+    }
+
+    ol {
+        float: left;
+        width: 84%;
+        margin: .7em 0 0;
+    }
+
+    ol li {
+        width: 33%;
+        margin: 0;
+    }
+    ol li:nth-child(3n) {
+        width: 34%;
+    }
+    ol li:nth-child(1), ol li:nth-child(2), ol li:nth-child(3) {
+        border-top: none;
+    }
+    
+    dl {
+        margin: .7em 0 0;
+        dt {
+        }
+        dd {
+        }
+        strong {
+            float: right;
+            margin-top: -2em;
+        }
+        em {
+            font-size: 130%;
+            font-style: normal;
+        }
+        
+    }
+
+}
