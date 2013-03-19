@@ -94,15 +94,12 @@ $rendered = $m->render(
         'title'  => $title,
         'style'  => $style,
         'resume' => $resume,
-        'reload' => $refresh_dev
+        'reload' => $config->refresh
     )
 );
 
 // Save the fully rendered html to the final destination
-file_put_contents(
-    $output,
-    $rendered
-);
+file_put_contents($output, $rendered);
 echo "Wrote html to $output\n";
 
 // If the user wants to make a pdf file, we'll use wkhtmltopdf to convert
