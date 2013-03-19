@@ -7,6 +7,21 @@
 */
 
 @media screen and (min-width: 15em) {
+    h1 {
+        padding: 40px 0 0 40px;
+    }
+    h2 {
+        padding: 0 30px 0 43px;
+    }
+    blockquote {
+        margin: -20px -20px 10px;
+        padding: 10px 20px 10px;
+    }
+    #profile+p {
+        width: 100%;
+        margin: 0 -10px;
+        padding: 10px;
+    }
 }
 
 
@@ -17,6 +32,30 @@
 */
 
 @media screen and (min-width: 30em) {
+
+    h1 {
+        margin: -40px -50px 0;
+        padding: 40px 0 0 40px;
+        font-size: 36px;
+        letter-spacing: -1px;
+        font-weight: 900;
+        text-transform: uppercase;
+        background: @headerBackground;
+        border-top: 5px solid #333333;
+        color: #FFFFFF;
+    }
+    h2 {
+        background: @headerBackground;
+        margin: -10px -50px 0;
+        padding: 0 0 40px 43px;
+        font-size: 18px;
+        letter-spacing: -1px;
+        font-weight: normal;
+        color: #F7F2C7;
+    }
+    blockquote {
+      margin-top: -50px;
+    }
 }
 
 
@@ -28,15 +67,21 @@
 
 @media screen and (min-width: 37.5em) {
     body {
-        padding: 2em 0;
+        padding: 20px 0;
     }
     blockquote {
         top: 10px;
         right: 50px;
         position: absolute;
+        padding-bottom: 0;
     }
     h1 { /* Open up the top section height so we don't collapse on the blockquote */
-        margin-top: .5em;
+        margin-top: -30px;
+        padding-left: 40px;
+    }
+    h2 {
+        padding-bottom: 55px;
+        padding-left: 43px;
     }
     ol {
         margin: 0 0 0 1em;
@@ -47,6 +92,10 @@
     }
     ol li:nth-child(1), ol li:nth-child(2) {
         border-top: none;
+    }
+
+    blockquote {
+      margin-top: -10px;
     }
 }
 
@@ -71,16 +120,12 @@
         position: absolute;
     }
     h1 {
-        margin-top: 0;
         font-size: 48px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-weight: normal;
+        margin-top: -45px;
     }
     h2 {
         text-transform: uppercase;
-        font-style: italic;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
         font-weight: normal;
     }
     
@@ -88,11 +133,13 @@
         float: left;
         width: 16%;
     }
-    
+
     h3+p {
         float: left;
         width: 84%;
     }
+    
+    
     
     ul li {
         width: 28%;
@@ -143,6 +190,21 @@
         
     }
 
+
+    #profile {
+        display: none;
+    }
+    
+    #profile+p {
+        padding: 5px 300px 20px 33px;
+        margin: -30px -50px 20px;
+        width: (912px - 300px - 33px);
+        float: none;
+        background: #2D6FC7;
+        color: #F7F2C7;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+        font-weight: 100;
+    }
 
 }
 

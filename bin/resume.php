@@ -15,23 +15,25 @@ use Assetic\Filter;
 
 // Application defaults
 $config = (object) array(
-    "source" => "",
+    "source"   => "",
     "template" => "modern",
-    "refresh" => false,
-    "pdf" => false
+    "refresh"  => false,
+    "pdf"      => false
 );
 
 // Command line arguments to populate the config
 $opts  = array(
     "s:" => "source:",   // source
     "t:" => "template:", // template
-    "r" => "refresh",    // refresh
-    "p" => "pdf"         // pdf output
+    "r"  => "refresh",    // refresh
+    "p"  => "pdf"         // pdf output
 );
 
 // Fetch the options from the command line arguments
 $options = getopt(implode("", array_keys($opts)), array_values($opts));
 
+// Consolidate the short and long options into the config array
+// Make sure that boolean options are set appropriately.
 foreach ($opts as $short => $long) {
     $isBool = (substr($short, -1, 1) !== ":");
     $short = trim($short, ":");

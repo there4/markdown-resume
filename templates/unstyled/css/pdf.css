@@ -13,4 +13,8 @@ body.pdf {
         border: none;
         text-align: left;
     }
+
+    a[href$='.pdf'] {
+        display: none;
+    }
 }

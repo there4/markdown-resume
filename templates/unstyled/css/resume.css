@@ -11,4 +11,14 @@
 
 body {
     color: #222;
+    margin: 1em;
+}
+
+#footer {
+  display: none;
+}
+#footer + p {
+  font-size: 13px;
+  font-style: italic;
+  color: #444;
 }

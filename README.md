@@ -6,6 +6,7 @@ at the [blog post for the project][blog].
 
 ## Features
 
+* Three styles to choose from: modern, blockish, unstyled
 * PDF generation via `wkhtmltopdf`
 * Responsive design for multiple device viewport sizes
 * Simple Markdown formatting
@@ -18,6 +19,10 @@ at the [blog post for the project][blog].
     php ./bin/resume.php --source resume/sample.md --pdf
 
 ## Options
+
+Choose a template with the -t option.
+
+    php ./bin/resume.php --source resume/sample.md -t blockish
 
 If you want to edit your markdown resume in your editor while watching it
 update in your browser, run this command:
@@ -40,9 +45,7 @@ on descendant and adjacent selectors.
 
 ## TODO
 
-* Additional styles
 * Google Analytics include
-* Command line documentation
 
 ## Acknowledgments
 

@@ -42,12 +42,12 @@ Progressively evolve cross-platform ideas before impactful infomediaries. Energi
 
 ### Experience {#experience}
 
-Microsoft
+Initrode Conglomerated
 : *Principal and Creative Lead*
   __2004-2005__
   Intrinsicly transform flexible manufactured products without excellent intellectual capital. Energistically evisculate orthogonal architectures through covalent action items. Assertively incentivize sticky platforms without synergistic materials.
 
-International Business Machines (IBM)
+Gizmonic Institute Company (GIM)
 : *Lead Web Designer*
   __2001-2004__
   Globally re-engineer cross-media schemas through viral methods of empowerment. Proactively grow long-term high-impact human capital and highly efficient innovation. Intrinsicly iterate excellent e-tailers with timely e-markets.

@@ -1,5 +1,6 @@
 body.pdf {
     color: black;
+    background: none;
     
     a {
         text-decoration: none;
@@ -18,6 +19,9 @@ body.pdf {
     .resume {
         position:relative;
         padding: 40px 80px;
+        
+        -webkit-box-shadow: none;
+        box-shadow: none;
     }
 
     a[href$='.pdf'] {
@@ -48,9 +52,12 @@ body.pdf {
     }
 
     blockquote {
-        top: 40px;
+        top: 45px;
         right: 50px;
         position: absolute;
+    }
+    blockquote a {
+        color: #F7F2C7;
     }
     
     ul li {
