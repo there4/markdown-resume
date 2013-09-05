@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 define('APPLICATION_BASE_PATH', realpath(__DIR__ . '/..'));
 
