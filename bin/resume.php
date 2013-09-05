@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 define('APPLICATION_BASE_PATH', realpath(__DIR__ . '/..'));
 
@@ -16,6 +17,7 @@ use Assetic\Filter;
 // Application defaults
 $config = (object) array(
     "source"   => "",
+    "output"   => "./output/",
     "template" => "modern",
     "refresh"  => false,
     "pdf"      => false
@@ -23,10 +25,11 @@ $config = (object) array(
 
 // Command line arguments to populate the config
 $opts  = array(
-    "s:" => "source:",   // source
-    "t:" => "template:", // template
-    "r"  => "refresh",    // refresh
-    "p"  => "pdf"         // pdf output
+    "s:"  => "source:",     // source
+    "o:"  => "output:",     // output
+    "t:"  => "template:",   // template
+    "r"   => "refresh",     // refresh
+    "p"   => "pdf"          // pdf output
 );
 
 // Fetch the options from the command line arguments
@@ -53,9 +56,9 @@ if (empty($config->source)) {
 
 $basename      = pathinfo($config->source, PATHINFO_FILENAME);
 $template_path = realpath(__DIR__ . '/../templates/' . $config->template);
-$pdf_source    = './output/' . $basename . '-pdf.html';
-$output        = './output/' . $basename . '.html';
-$pdf_output    = './output/' . $basename . '.pdf';
+$pdf_source    = $config->output . '/' . $basename . '-pdf.html';
+$output        = $config->output . '/' . $basename . '.html';
+$pdf_output    = $config->output . '/' . $basename . '.pdf';
 
 if (!file_exists($config->source)) {
   exit("Please specify a valid source file.\n");
