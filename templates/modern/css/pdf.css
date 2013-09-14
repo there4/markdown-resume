@@ -1,6 +1,6 @@
 body.pdf {
     color: black;
-    
+
     a {
         text-decoration: none;
         color: black;
@@ -14,7 +14,7 @@ body.pdf {
         border-width: 8px 0 2px 0;
         text-align: left;
     }
-    
+
     .resume {
         position:relative;
         padding: 40px 80px;
@@ -52,7 +52,7 @@ body.pdf {
         right: 50px;
         position: absolute;
     }
-    
+
     ul li {
         width: 28%;
         float: left;
@@ -86,11 +86,12 @@ body.pdf {
     ol li:nth-child(1), ol li:nth-child(2), ol li:nth-child(3) {
         border-top: none;
     }
-    
+
     dl {
         margin: .7em 0 0;
-        dt {
-        }
+        page-break-inside: avoid !important;
+        display: block;
+        dt {}
         dd {
         }
         strong {
@@ -101,7 +102,7 @@ body.pdf {
             font-size: 130%;
             font-style: normal;
         }
-        
+
     }
 
 }
