@@ -17,7 +17,7 @@ use Assetic\Filter;
 // Application defaults
 $config = (object) array(
     "source"   => "",
-    "output"   => "./output/",
+    "output"   => "./output",
     "template" => "modern",
     "refresh"  => false,
     "pdf"      => false
