@@ -91,6 +91,8 @@ body.pdf {
         margin: .7em 0 0;
         page-break-inside: avoid !important;
         display: block;
+        width:84%;
+        float: left;
         dt {}
         dd {
         }
