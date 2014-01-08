@@ -53,5 +53,17 @@ The initial inspiration is from the [Sample Resume Template][srt].
 However, no HTML from that project has been used in this. General layout has been reused, and media queries
 have been added. It's a nice template, and if you are a more comfortable with html than markdown, you should use it.
 
+## Changelog
+
+* __0.9.0__ : Add composer and update README with new changelog
+* __0.8.8__ : Add Chinese text example (@ishitcno1)
+* __0.8.7__ : Update pdf formatting of the modern template (@roleary)
+* __0.8.6__ : Fix output path (@abhikandoi2000)
+* __0.8.5__ : Fix issue #2
+* __0.8.4__ : Correct chmod and add parameter for output directory (@kevinxucs)
+* __0.8.2__ : Update build script and add refresh command option
+* __0.8.1__ : Updating formatting of initial templates
+* __0.8__ : Initial Release to Public 
+
 [srt]: http://sampleresumetemplate.net/ "A great starting point"
 [blog]: http://there4development.com/blog/2012/12/31/markdown-resume-builder/

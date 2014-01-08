@@ -1,0 +1,29 @@
+{
+    "name": "there4/markdown-resume",
+    "description": "Generate a responsive CSS3 and HTML5 resume with Markdown, with optional PDF output.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Craig Davis",
+            "email": "craig@there4development.com",
+            "role": "Developer"
+        }, {
+            "name": "Kaiwen Xu",
+            "email": "kevin@kevxu.net",
+            "role": "Contributor"
+        }, {
+            "name": "ishitcno1",
+            "role": "Contributor"
+        }, {
+            "name": "Roland O'Leary",
+            "role": "Contributor"
+        }, {
+            "name": "Abhishek Kandoi",
+            "email": "abhikandoi2000@gmail.com",
+            "role": "Contributor"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+    }
+}
