@@ -25,5 +25,12 @@
     ],
     "minimum-stability": "dev",
     "require": {
+    },
+    "require-dev": {
+        "symfony/console": "v2.3.4",
+        "symfony/config": "v2.3.4",
+        "symfony/yaml": "v2.3.4",
+        "leafo/lessphp": "v0.4.0",
+        "michelf/php-markdown": "1.4.0"
     }
 }
