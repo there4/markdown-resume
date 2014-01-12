@@ -28,7 +28,9 @@ at the [blog post for the project][blog].
     php ./bin/resume.php --source resume/sample.md
     php ./bin/resume.php --source resume/sample.md --pdf
 
-## Options
+## Help
+
+## Examples
 
 Choose a template with the -t option.
 
