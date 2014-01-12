@@ -1,5 +1,5 @@
 <?php
-namespace FogBugz\Cli;
+namespace Resume\Cli;
 
 class TwigFormatters
 {

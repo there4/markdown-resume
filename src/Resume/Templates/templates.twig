@@ -1,0 +1,9 @@
+————————————————————————————————————————————————————————————————————————————————
+<heading> Available Templates                                                            </heading>
+————————————————————————————————————————————————————————————————————————————————
+{% for template in templates %}
+{{template.name|style("info")|pad(15, "left")}}{{template.description}}
+{% endfor %}
+{% if templates|length == 0%}
+  <notice>There are no templates available</notice>
+{% endif  %}

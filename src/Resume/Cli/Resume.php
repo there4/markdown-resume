@@ -16,12 +16,15 @@ class Resume extends Application
 
     public $recentCaseLimit = 10;
 
-    public function initialize($templatePath, $project)
+    public function initialize($templatePath, $consoleTemplatePath, $project)
     {
         $runSetup = false;
 
         // Add the composer information for use in version info and such.
         $this->project = $project;
+
+        // The absolute path to the html output templates
+        $this->templatePath = $templatePath;
 
         // https://github.com/symfony/Console/blob/master/Output/Output.php
         // the alternative is OutputInterface::OUTPUT_PLAIN;
@@ -32,11 +35,14 @@ class Resume extends Application
         $this->setVersion($this->project->version);
 
         // Load our commands into the application
+        $this->add(new Command\HtmlCommand());
+        $this->add(new Command\PdfCommand());
         $this->add(new Command\SelfUpdateCommand());
+        $this->add(new Command\TemplatesCommand());
         $this->add(new Command\VersionCommand());
 
         // We'll use [Twig](http://twig.sensiolabs.org/) for template output
-        $loader = new \Twig_Loader_Filesystem($templatePath);
+        $loader = new \Twig_Loader_Filesystem($consoleTemplatePath);
         $this->twig = new \Twig_Environment(
             $loader,
             array(
@@ -47,8 +53,8 @@ class Resume extends Application
         );
 
         // These are helpers that we use to format output on the cli: styling and padding and such
-        $this->twig->addFilter('pad', new \Twig_Filter_Function("FogBugz\Cli\TwigFormatters::strpad"));
-        $this->twig->addFilter('style', new \Twig_Filter_Function("FogBugz\Cli\TwigFormatters::style"));
+        $this->twig->addFilter('pad', new \Twig_Filter_Function("Resume\Cli\TwigFormatters::strpad"));
+        $this->twig->addFilter('style', new \Twig_Filter_Function("Resume\Cli\TwigFormatters::style"));
         $this->twig->addFilter('repeat', new \Twig_Filter_Function("str_repeat"));
         $this->twig->addFilter('wrap', new \Twig_Filter_Function("wordwrap"));
     }

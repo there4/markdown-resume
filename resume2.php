@@ -21,9 +21,10 @@ if (!defined("IN_PHAR")) {
 }
 
 $templatePath = __DIR__ . '/templates';
+$consoleTemplatePath = __DIR__ . '/src/Resume/Templates';
 
 // Init the app with these params
-$console->initialize($templatePath, $project);
+$console->initialize($templatePath, $consoleTemplatePath, $project);
 
 // Execute the console app.
 $console->run();
