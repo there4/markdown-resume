@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Assetic\Asset\AssetCollection;
-use Assetic\Asset\GlobAsset;
+use Assetic\Asset\FileAsset;
 use Assetic\Filter;
 use Michelf\MarkdownExtra;
 use Michelf\SmartyPants;
@@ -102,11 +102,21 @@ class HtmlCommand extends Command
 
         // We build these into a single string so that we can deploy this resume as a
         // single file.
-        $cssAssetSelector = join(DIRECTORY_SEPARATOR, array($templatePath, '/css/*.css'));
+        $cssAssetPath = join(DIRECTORY_SEPARATOR, array($templatePath, '/css'));
+        $cssAssets = array();
+
+        // Our PHAR deployment can't handle the GlobAsset typically used here
+        foreach (new \DirectoryIterator($cssAssetPath) as $fileInfo) {
+            if ($fileInfo->isDot()) continue;
+            if (!$fileInfo->isFile()) continue;
+            array_push($cssAssets, new FileAsset($fileInfo->getPathname()));
+        }
+
         $css = new AssetCollection(
-            array(new GlobAsset($cssAssetSelector)),
+            $cssAssets,
             array(new Filter\LessphpFilter())
         );
+
         $style = $css->dump();
 
         $templateContent = file_get_contents($templateIndexPath);
