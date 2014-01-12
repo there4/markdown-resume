@@ -10,7 +10,7 @@ use Assetic\Asset\AssetCollection;
 use Assetic\Asset\FileAsset;
 use Assetic\Asset\GlobAsset;
 use Assetic\Filter;
-use Michelf\Markdown;
+use Michelf\MarkdownExtra;
 use Michelf\SmartyPants;
 
 class HtmlCommand extends Command
@@ -100,7 +100,7 @@ class HtmlCommand extends Command
         $resumeContent   = file_get_contents($source);
 
         // Process with Markdown, and then use SmartyPants to clean up punctuation.
-        $resumeHtml = Markdown::defaultTransform($resumeContent);
+        $resumeHtml = MarkdownExtra::defaultTransform($resumeContent);
         $resumeHtml = SmartyPants::defaultTransform($resumeHtml);
 
         // We'll construct the title for the html document from the h1 and h2 tags
