@@ -1,5 +1,4 @@
 <?php
-
 namespace Resume\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -12,7 +11,7 @@ class SelfUpdateCommand extends Command
     {
         $this
             ->setName('selfupdate')
-            ->setDescription('Updates fb.phar to the latest version.')
+            ->setDescription('Updates md2resume.phar to the latest version.')
             ->setHelp(
 <<<EOT
 The <info>self-update</info> command checks github for newer

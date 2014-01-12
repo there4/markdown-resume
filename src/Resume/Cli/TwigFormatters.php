@@ -3,7 +3,6 @@ namespace Resume\Cli;
 
 class TwigFormatters
 {
-
     public static function strpad($string, $length, $position = "center")
     {
         switch ($position) {

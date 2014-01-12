@@ -2,7 +2,7 @@
 
 <phpunit bootstrap="./tests/bootstrap.php" colors="true">
     <testsuites>
-        <testsuite name="FogBugz Client Test Suite">
+        <testsuite name="Markdown Resume Builder Test Suite">
             <directory suffix="Test.php">./tests/</directory>
         </testsuite>
     </testsuites>
