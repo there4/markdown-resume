@@ -59,9 +59,9 @@ function run_phar()
     echo " * Construction phar and moving to ./bin/md2resume\n";
     $command =
         'rm -f ./bin/md2resume && rm -f ./bin/md2resume.phar &&'
-        . 'php -dphar.readonly=0 build/empir make ./bin/md2resume.phar working.php . --exclude="'
+        . 'php -dphar.readonly=0 build/empir make ./bin/md2resume.phar md2resume_dev.php . --exclude="'
         . '*.git/*|*.gitignore|*test*|*Tests*|*.md|*/doc/*|*.lock|*token.txt|pakefile'
-        . '|.*|build/*|*.markdown|*.phar|*LICENSE|*AUTHORS|*CHANGELOG|*.dist|*.tpl'
+        . '|.*|build/*|*.markdown|*.phar|*LICENSE|*AUTHORS|*CHANGELOG|*.dist|*.tpl|.travis.yml'
         . '" && chmod a+x ./bin/md2resume.phar'
         . ' && mv ./bin/md2resume.phar ./bin/md2resume';
     passthru($command);
@@ -70,14 +70,14 @@ function run_phar()
 function run_sniff()
 {
     echo " * Checking files for PSR2\n";
-    passthru("phpcs -p --standard=PSR2 ./src/ ./resume.php");
+    passthru("phpcs -p --standard=PSR2 ./src/ ./md2resume_dev.php");
 }
 
 function run_fixer()
 {
     echo "\n * Running php-cs-fixer\n";
     passthru(
-        "php-cs-fixer fix ./bin/resume2.php"
+        "php-cs-fixer fix ./md2resume_dev.php"
         . " && php-cs-fixer fix ./src/Resume/Cli/"
         . " && php-cs-fixer fix ./src/Resume/Command/"
     );
@@ -87,7 +87,7 @@ function run_readme()
 {
     echo " * Updating README documentation\n";
     $readme = file("README.md");
-    $help = explode("\n", shell_exec("php ./resume2.php list --no-interaction"));
+    $help = explode("\n", shell_exec("php ./md2resume_dev.php list --no-interaction"));
 
     $helpStart = $helpEnd = 0;
     foreach ($readme as $lineNumber => $line) {

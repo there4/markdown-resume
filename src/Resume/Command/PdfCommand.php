@@ -23,7 +23,7 @@ class PdfCommand extends HtmlCommand
             ->addArgument(
                 'destination',
                 InputArgument::REQUIRED,
-                'Output pdf document'
+                'Output destination folder'
             )
             ->addOption(
                'template',
@@ -35,11 +35,12 @@ class PdfCommand extends HtmlCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->app   = $this->getApplication();
-        $source      = $input->getArgument('source');
-        $destination = $input->getArgument('destination');
-        $template    = $input->getOption('template');
-        $pdfSource   = join(DIRECTORY_SEPARATOR, array(dirname($destination), '.tmp_pdf_source.html'));
+        $this->app    = $this->getApplication();
+        $source       = $input->getArgument('source');
+        $destination  = trim($input->getArgument('destination'), DIRECTORY_SEPARATOR);
+        $template     = $input->getOption('template');
+        $pdfSource    = join(DIRECTORY_SEPARATOR, array($destination, '.tmp_pdf_source.html'));
+        $destFilename = join(DIRECTORY_SEPARATOR, array($destination, pathinfo($source, PATHINFO_FILENAME) . '.pdf'));
 
         // Make sure we've got out converter available
         exec('wkhtmltopdf -V', $results, $returnVal);
@@ -54,6 +55,7 @@ class PdfCommand extends HtmlCommand
                 ),
                 $this->app->outputFormat
             );
+
             return false;
         }
 
@@ -68,7 +70,7 @@ class PdfCommand extends HtmlCommand
         file_put_contents($pdfSource, $rendered);
 
         // Process the document with wkhtmltopdf
-        exec('wkhtmltopdf ' . $pdfSource .' ' . $destination);
+        exec('wkhtmltopdf ' . $pdfSource .' ' . $destFilename);
 
         // Unlink the temporary file
         unlink($pdfSource);

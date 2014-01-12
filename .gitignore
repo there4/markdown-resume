@@ -1,7 +1,7 @@
 vendor
-resume/_*.md
-output/*.html
-output/*.pdf
+examples/resume/_*.md
+examples/output/*.html
+examples/output/*.pdf
 .tmp_pdf_source.html
 
 # OSX files

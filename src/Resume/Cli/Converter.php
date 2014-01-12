@@ -1,7 +1,6 @@
 <?php
 namespace Resume\Cli;
 
-
 class Converter
 {
 

@@ -7,7 +7,6 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Assetic\Asset\AssetCollection;
-use Assetic\Asset\FileAsset;
 use Assetic\Asset\GlobAsset;
 use Assetic\Filter;
 use Michelf\MarkdownExtra;
@@ -29,7 +28,7 @@ class HtmlCommand extends Command
             ->addArgument(
                 'destination',
                 InputArgument::REQUIRED,
-                'Output html document'
+                'Output destination folder'
             )
             ->addOption(
                'template',
@@ -48,26 +47,28 @@ class HtmlCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->app   = $this->getApplication();
-        $source      = $input->getArgument('source');
-        $destination = $input->getArgument('destination');
-        $template    = $input->getOption('template');
-        $refresh     = $input->getOption('refresh');
+        $this->app    = $this->getApplication();
+        $source       = $input->getArgument('source');
+        $destination  = trim($input->getArgument('destination'), DIRECTORY_SEPARATOR);
+        $template     = $input->getOption('template');
+        $refresh      = $input->getOption('refresh');
+        $destFilename = join(DIRECTORY_SEPARATOR, array($destination, pathinfo($source, PATHINFO_FILENAME) . '.html'));
 
-        $rendered = $this->generateHtml($source, $template, $refesh);
-        file_put_contents($destination, $rendered);
+        $rendered = $this->generateHtml($source, $template, $refresh);
+        file_put_contents($destFilename, $rendered);
         $output->writeln(
             sprintf(
                 "Wrote resume to: <info>%s</info>",
-                $destination
+                $destFilename
             ),
             $this->app->outputFormat
         );
+
         return true;
     }
 
-    protected function generateHtml($source, $template, $refresh) {
-
+    protected function generateHtml($source, $template, $refresh)
+    {
         // Check that the source file is sane
         if (!file_exists($source)) {
             $output->writeln(
@@ -77,6 +78,7 @@ class HtmlCommand extends Command
                 ),
                 $this->app->outputFormat
             );
+
             return false;
         }
 
@@ -98,6 +100,7 @@ class HtmlCommand extends Command
                 ),
                 $this->app->outputFormat
             );
+
             return false;
         }
 

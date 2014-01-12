@@ -18,7 +18,7 @@ class TemplatesCommand extends Command
     {
         $this->app = $this->getApplication();
         $tplData = array('templates' => array());
-        foreach(glob($this->app->templatePath . '/*', GLOB_ONLYDIR) as $dir) {
+        foreach (glob($this->app->templatePath . '/*', GLOB_ONLYDIR) as $dir) {
             $tplData['templates'][] = (object) array(
                 'name' => basename($dir),
                 'description' => file_exists($dir . '/description.txt')
