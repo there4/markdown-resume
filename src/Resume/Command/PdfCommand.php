@@ -26,10 +26,10 @@ class PdfCommand extends HtmlCommand
                 'Output destination folder'
             )
             ->addOption(
-               'template',
-               't',
-               InputOption::VALUE_NONE,
-               'Which of the templates to use'
+                'template',
+                't',
+                InputOption::VALUE_NONE,
+                'Which of the templates to use'
             );
     }
 
@@ -46,13 +46,10 @@ class PdfCommand extends HtmlCommand
         exec('wkhtmltopdf -V', $results, $returnVal);
         if ($returnVal) {
             $output->writeln(
-                sprintf(
-                    "\n<error>Error:</error> Unable to locate wkhtmltopdf.\n" .
-                    "  Please make sure that it is installed and available in " .
-                    "your path. \n  For installation help, please read: " .
-                    "https://github.com/pdfkit/pdfkit/wiki/Installing-WKHTMLTOPDF \n\n",
-                    $destination
-                ),
+                "\n<error>Error:</error> Unable to locate wkhtmltopdf.\n" .
+                "  Please make sure that it is installed and available in " .
+                "your path. \n  For installation help, please read: " .
+                "https://github.com/pdfkit/pdfkit/wiki/Installing-WKHTMLTOPDF \n\n",
                 $this->app->outputFormat
             );
 
@@ -63,8 +60,10 @@ class PdfCommand extends HtmlCommand
 
         // The pdf needs some extra css rules, and so we'll add them here
         // to our html document
-        // TODO: Update this with the simple DOM to add class
-        $rendered = str_replace('body class=""', 'body class="pdf"', $rendered);
+        $simpleDom = new \simple_html_dom($rendered);
+        $body = $simpleDom->find('body', 0);
+        $body->class = $body->class . ' pdf';
+        $rendered = (string) $simpleDom;
 
         // Save to a temp destination for the pdf renderer to use
         file_put_contents($pdfSource, $rendered);
@@ -78,7 +77,7 @@ class PdfCommand extends HtmlCommand
         $output->writeln(
             sprintf(
                 "Wrote pdf resume to: <info>%s</info>",
-                $destination
+                $destFilename
             ),
             $this->app->outputFormat
         );

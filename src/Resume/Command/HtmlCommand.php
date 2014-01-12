@@ -31,17 +31,17 @@ class HtmlCommand extends Command
                 'Output destination folder'
             )
             ->addOption(
-               'template',
-               't',
-               InputOption::VALUE_OPTIONAL,
-               'Which of the templates to use'
+                'template',
+                't',
+                InputOption::VALUE_OPTIONAL,
+                'Which of the templates to use'
             )
             ->addOption(
-               'refresh',
-               'r',
-               InputOption::VALUE_NONE,
-               'If set, the html will include a meta command to refresh the ' .
-               'document every 5 seconds.'
+                'refresh',
+                'r',
+                InputOption::VALUE_NONE,
+                'If set, the html will include a meta command to refresh the ' .
+                'document every 5 seconds.'
             );
     }
 
@@ -86,12 +86,8 @@ class HtmlCommand extends Command
         if (!$template) {
             $template = $this->app->defaultTemplate;
         }
-        $templatePath = join(DIRECTORY_SEPARATOR, array(
-            $this->app->templatePath, basename($template)
-        ));
-        $templateIndexPath = join(DIRECTORY_SEPARATOR, array(
-            $templatePath, 'index.html'
-        ));
+        $templatePath = join(DIRECTORY_SEPARATOR, array($this->app->templatePath, basename($template)));
+        $templateIndexPath = join(DIRECTORY_SEPARATOR, array($templatePath, 'index.html'));
         if (!file_exists($templateIndexPath)) {
             $output->writeln(
                 sprintf(
