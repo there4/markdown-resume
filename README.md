@@ -80,6 +80,11 @@ and then use a CSS rules to display a very nice resume. Note that because we
 have very few ways to nest or identify elements that many of the css rules are
 based on descendant and adjacent selectors. 
 
+__PLEASE NOTE__: The templates are compiled into the phar archive in the `./bin`
+folder. If you intend to edit the templates or add new ones, you'll need to run
+this application in the dev mode. See below for more information about doing
+this.
+
 ## Feature Development
 
 The application is deployed as a compiled phar file. In order to add new
