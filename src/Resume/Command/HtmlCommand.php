@@ -107,8 +107,9 @@ class HtmlCommand extends Command
 
         // Our PHAR deployment can't handle the GlobAsset typically used here
         foreach (new \DirectoryIterator($cssAssetPath) as $fileInfo) {
-            if ($fileInfo->isDot()) continue;
-            if (!$fileInfo->isFile()) continue;
+            if ($fileInfo->isDot() || !$fileInfo->isFile()) {
+                continue;
+            }
             array_push($cssAssets, new FileAsset($fileInfo->getPathname()));
         }
 
