@@ -54,6 +54,20 @@ class HtmlCommand extends Command
         $template    = $input->getOption('template');
         $refresh     = $input->getOption('refresh');
 
+        $rendered = $this->generateHtml($source, $template, $refesh);
+        file_put_contents($destination, $rendered);
+        $output->writeln(
+            sprintf(
+                "Wrote resume to: <info>%s</info>",
+                $destination
+            ),
+            $this->app->outputFormat
+        );
+        return true;
+    }
+
+    protected function generateHtml($source, $template, $refresh) {
+
         // Check that the source file is sane
         if (!file_exists($source)) {
             $output->writeln(
@@ -124,16 +138,7 @@ class HtmlCommand extends Command
             )
         );
 
-        // Save the fully rendered html to the final destination
-        file_put_contents($destination, $rendered);
-        $output->writeln(
-            sprintf(
-                "Wrote resume to: <info>%s</info>",
-                $destination
-            ),
-            $this->app->outputFormat
-        );
-
+        return $rendered;
     }
 }
 

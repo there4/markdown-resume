@@ -2,6 +2,7 @@ vendor
 resume/_*.md
 output/*.html
 output/*.pdf
+.tmp_pdf_source.html
 
 # OSX files
 .DS_Store

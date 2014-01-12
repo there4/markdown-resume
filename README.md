@@ -17,7 +17,7 @@ at the [blog post for the project][blog].
 ## Features
 
 * Three styles to choose from: modern, blockish, unstyled
-* PDF generation via `wkhtmltopdf`
+* PDF generation via [wkhtmltopdf][wkhtmltopdf]
 * Responsive design for multiple device viewport sizes
 * Simple Markdown formatting
 * Single file deployment
@@ -109,3 +109,4 @@ have been added. It's a nice template, and if you are a more comfortable with ht
 [srt]: http://sampleresumetemplate.net/ "A great starting point"
 [blog]: http://there4development.com/blog/2012/12/31/markdown-resume-builder/
 [pake]: https://github.com/indeyets/pake/wiki/Installing-Pake
+[wkhtmltopdf]: https://github.com/pdfkit/pdfkit/wiki/Installing-WKHTMLTOPDF

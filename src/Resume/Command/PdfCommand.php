@@ -1,13 +1,14 @@
 <?php
 namespace Resume\Command;
 
+use Resume\Command\HtmlCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class PdfCommand extends Command
+class PdfCommand extends HtmlCommand
 {
     protected function configure()
     {
@@ -20,9 +21,9 @@ class PdfCommand extends Command
                 'Source markdown document'
             )
             ->addArgument(
-                'output',
+                'destination',
                 InputArgument::REQUIRED,
-                'Output html document'
+                'Output pdf document'
             )
             ->addOption(
                'template',
@@ -34,6 +35,53 @@ class PdfCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->app   = $this->getApplication();
+        $source      = $input->getArgument('source');
+        $destination = $input->getArgument('destination');
+        $template    = $input->getOption('template');
+        $pdfSource   = join(DIRECTORY_SEPARATOR, array(dirname($destination), '.tmp_pdf_source.html'));
+
+        // Make sure we've got out converter available
+        exec('wkhtmltopdf -V', $results, $returnVal);
+        if ($returnVal) {
+            $output->writeln(
+                sprintf(
+                    "\n<error>Error:</error> Unable to locate wkhtmltopdf.\n" .
+                    "  Please make sure that it is installed and available in " .
+                    "your path. \n  For installation help, please read: " .
+                    "https://github.com/pdfkit/pdfkit/wiki/Installing-WKHTMLTOPDF \n\n",
+                    $destination
+                ),
+                $this->app->outputFormat
+            );
+            return false;
+        }
+
+        $rendered = $this->generateHtml($source, $template, false);
+
+        // The pdf needs some extra css rules, and so we'll add them here
+        // to our html document
+        // TODO: Update this with the simple DOM to add class
+        $rendered = str_replace('body class=""', 'body class="pdf"', $rendered);
+
+        // Save to a temp destination for the pdf renderer to use
+        file_put_contents($pdfSource, $rendered);
+
+        // Process the document with wkhtmltopdf
+        exec('wkhtmltopdf ' . $pdfSource .' ' . $destination);
+
+        // Unlink the temporary file
+        unlink($pdfSource);
+
+        $output->writeln(
+            sprintf(
+                "Wrote pdf resume to: <info>%s</info>",
+                $destination
+            ),
+            $this->app->outputFormat
+        );
+
+        return true;
     }
 }
 
