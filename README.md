@@ -66,9 +66,9 @@ a fresh preview.
 Markdown is limited to basic html markup. Follow the `examples/source/sample.md`
 file  as a guideline. This file includes various headers and several nested
 elements. This allows us to construct a semantic HTML document for the resume,
-and then use a CSS rules to display a very nice resume. Note that because we
-have very few ways to nest or identify elements that many of the css rules are
-based on descendant and adjacent selectors. 
+and then use CSS rules to display a nicely formatted resume. Note that because
+we have very few ways to nest or identify elements that many of the css rules
+are based on descendant and adjacent selectors. 
 
 __PLEASE NOTE__: The templates are compiled into the phar archive in the `./bin`
 folder. If you intend to edit the templates or add new ones, you'll need to run
@@ -86,11 +86,6 @@ commands, you'll need to first install the dependencies:
 
 After that, you can run the `md2resume_dev.php` file from the command line.
 Check out the pake tooling for more information about the build.
-
-## TODO
-
-* Google Analytics include
-* CDN for fonts
 
 ## Acknowledgments
 
