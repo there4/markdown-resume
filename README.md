@@ -6,55 +6,104 @@ at the [blog post for the project][blog].
 
 ## Features
 
-* Three styles to choose from: modern, blockish, unstyled
-* PDF generation via `wkhtmltopdf`
+* Three styles to choose from: modern, blockish, unstyled (Fork and add more!)
+* PDF generation via [wkhtmltopdf][wkhtmltopdf]
 * Responsive design for multiple device viewport sizes
 * Simple Markdown formatting
-* Single file deployment
+* Single file deployment (no external stylesheets)
 * You can now version control and branch your resume.
 
 ## Quickstart
 
-    php ./bin/resume.php --source resume/sample.md
-    php ./bin/resume.php --source resume/sample.md --pdf
+  There is no installation or need to run composer. Just run the phar file:
 
-## Options
+    ./bin/md2resume html examples/source/sample.md examples/output/
+    ./bin/md2resume pdf examples/source/sample.md examples/output/
+
+## Help
+
+    Markdown Resume Generator version 2.0.0 by Craig Davis
+    
+    Usage:
+      [options] command [arguments]
+    
+    Options:
+      --help           -h Display this help message.
+      --quiet          -q Do not output any message.
+      --verbose        -v|vv|vvv Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+      --version        -V Display this application version.
+      --ansi              Force ANSI output.
+      --no-ansi           Disable ANSI output.
+      --no-interaction -n Do not ask any interactive question.
+    
+    Available commands:
+      help         Displays help for a command
+      html         Generate an HTML resume from a markdown file
+      list         Lists commands
+      pdf          Generate a PDF from a markdown file
+      selfupdate   Updates md2resume.phar to the latest version.
+      templates    List available templates
+      version      Show current version information
+    
+## Examples
 
 Choose a template with the -t option.
 
-    php ./bin/resume.php --source resume/sample.md -t blockish
+    ./bin/md2resume html --template blockish examples/source/sample.md examples/output/
 
 If you want to edit your markdown resume in your editor while watching it
 update in your browser, run this command:
 
-    watch php ./bin/resume.php -s resume/sample.md -r
+    watch ./bin/md2resume html --refresh examples/source/sample.md examples/output/
     
 This makes the build script run periodically, and html document will refresh
-every two seconds via a meta tag. Open the `./ouput/sample.html` file in
-your browser, and then just save your markdown document when you want to see
+every two seconds via a meta tag. Open the `./examples/ouput/sample.html` file
+in your browser, and then just save your markdown document when you want to see
 a fresh preview.
 
-## Development
+## Authoring Your Resume
 
-Markdown is limited to basic html markup. Follow the `resume/sample.md` file 
-as a guideline. This file includes various headers and several nested elements.
-This allows us to construct a semantic HTML document for the resume, and then
-use a CSS rules to display a very nice resume. Note that because we have very
-few ways to nest or identify elements that many of the css rules are based
-on descendant and adjacent selectors. 
+Markdown is limited to basic html markup. Follow the `examples/source/sample.md`
+file  as a guideline. This file includes various headers and several nested
+elements. This allows us to construct a semantic HTML document for the resume,
+and then use a CSS rules to display a very nice resume. Note that because we
+have very few ways to nest or identify elements that many of the css rules are
+based on descendant and adjacent selectors. 
+
+__PLEASE NOTE__: The templates are compiled into the phar archive in the `./bin`
+folder. If you intend to edit the templates or add new ones, you'll need to run
+this application in the dev mode. See below for more information about doing
+this.
+
+## Feature Development
+
+The application is deployed as a compiled phar file. In order to add new
+commands, you'll need to first install the dependencies:
+
+* `composer install`
+* `pear install PHP_CodeSniffer`
+* [install pake][pake]
+
+After that, you can run the `md2resume_dev.php` file from the command line.
+Check out the pake tooling for more information about the build.
 
 ## TODO
 
 * Google Analytics include
+* CDN for fonts
 
 ## Acknowledgments
 
 The initial inspiration is from the [Sample Resume Template][srt].
-However, no HTML from that project has been used in this. General layout has been reused, and media queries
-have been added. It's a nice template, and if you are a more comfortable with html than markdown, you should use it.
+However, no HTML from that project has been used in this. General layout has
+been reused, and media queries have been added. It's a nice template, and if you
+are a more comfortable with html than markdown, you should use it.
 
 ## Changelog
 
+* __2.0.0__ : Complete rewrite with the [symfony console component][console].
+  Deployment is no done with a compiled phar file, and development dependencies
+  are managed with composer.
 * __0.9.0__ : Add composer and update README with new changelog
 * __0.8.8__ : Add Chinese text example (@ishitcno1)
 * __0.8.7__ : Update pdf formatting of the modern template (@roleary)
@@ -67,3 +116,6 @@ have been added. It's a nice template, and if you are a more comfortable with ht
 
 [srt]: http://sampleresumetemplate.net/ "A great starting point"
 [blog]: http://there4development.com/blog/2012/12/31/markdown-resume-builder/
+[pake]: https://github.com/indeyets/pake/wiki/Installing-Pake
+[wkhtmltopdf]: https://github.com/pdfkit/pdfkit/wiki/Installing-WKHTMLTOPDF
+[console]: http://symfony.com/doc/current/components/console/introduction.html

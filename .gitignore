@@ -1,7 +1,18 @@
-resume/_*.md
-output/*.html
-output/*.pdf
+vendor
+examples/resume/_*.md
+examples/output/*.html
+examples/output/*.pdf
+.tmp_pdf_source.html
 
-resume/sample_long.md
+# OSX files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
 
-/vendor/
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
