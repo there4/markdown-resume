@@ -21,14 +21,14 @@ class HtmlCommand extends Command
                 'Source markdown document'
             )
             ->addArgument(
-                'output',
+                'destination',
                 InputArgument::REQUIRED,
                 'Output html document'
             )
             ->addOption(
                'template',
                't',
-               InputOption::VALUE_NONE,
+               InputOption::VALUE_OPTIONAL,
                'Which of the templates to use'
             )
             ->addOption(
@@ -42,6 +42,41 @@ class HtmlCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->app   = $this->getApplication();
+        $source      = $input->getArgument('source');
+        $destination = $input->getArgument('destination');
+        $template    = $input->getOption('template');
+        $refresh     = $input->getOption('refresh');
+
+        // Check that the source file is sane
+        if (!file_exists($source)) {
+            $output->writeln(
+                sprintf(
+                    "<error>Unable to open source file: %s</error>",
+                    $source
+                ),
+                $this->app->outputFormat
+            );
+            return false;
+        }
+
+        // Check that our template is sane, or set to the default one
+        if (!$template) {
+            $template = $this->app->defaultTemplate;
+        }
+        $templatePath = join(DIRECTORY_SEPARATOR, array(
+            $this->app->templatePath, basename($template), '/index.html'
+        ));
+        if (!file_exists($templatePath)) {
+            $output->writeln(
+                sprintf(
+                    "<error>Unable to open template file: %s</error>",
+                    $templatePath
+                ),
+                $this->app->outputFormat
+            );
+            return false;
+        }
     }
 }
 

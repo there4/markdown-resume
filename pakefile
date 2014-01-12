@@ -70,7 +70,7 @@ function run_phar()
 function run_sniff()
 {
     echo " * Checking files for PSR2\n";
-    passthru("phpcs -p --standard=PSR2 ./src/ ./working.php");
+    passthru("phpcs -p --standard=PSR2 ./src/ ./resume.php");
 }
 
 function run_fixer()
@@ -87,7 +87,7 @@ function run_readme()
 {
     echo " * Updating README documentation\n";
     $readme = file("README.md");
-    $help = explode("\n", shell_exec("php ./working.php list --no-interaction"));
+    $help = explode("\n", shell_exec("php ./resume2.php list --no-interaction"));
 
     $helpStart = $helpEnd = 0;
     foreach ($readme as $lineNumber => $line) {
