@@ -2,10 +2,10 @@
 
 2.0 Work in progress, unstable and not yet ready for use.
 
-- [ ] Update composer for symfony dependencies
+- [x] Update composer for symfony dependencies
 - [ ] Add pake and phar generator
 - [ ] Update bin with new generated phar
-- [ ] Convert to new command structure
+- [x] Convert to new command structure
 - [ ] Update help files
 
 ## Description

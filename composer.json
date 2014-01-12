@@ -1,7 +1,10 @@
 {
     "name": "there4/markdown-resume",
-    "description": "Generate a responsive CSS3 and HTML5 resume with Markdown, with optional PDF output.",
+    "description": "Markdown Resume Generator",
+    "homepage": "https://github.com/there4/markdown-resume",
+    "keywords": ["markdown", "resume", "html5"],
     "license": "MIT",
+    "version": "2.0.0",
     "authors": [
         {
             "name": "Craig Davis",
@@ -23,6 +26,9 @@
             "role": "Contributor"
         }
     ],
+    "support": {
+        "issues": "https://github.com/there4/markdown-resume/issues"
+    },
     "minimum-stability": "dev",
     "require": {
     },
@@ -31,6 +37,10 @@
         "symfony/config": "v2.3.4",
         "symfony/yaml": "v2.3.4",
         "leafo/lessphp": "v0.4.0",
-        "michelf/php-markdown": "1.4.0"
+        "michelf/php-markdown": "1.4.0",
+        "twig/twig": "v1.13.2",
+        "mustache/mustache": "2.5.1",
+        "michelf/php-smartypants": "1.6.0-beta1",
+        "simple-html-dom/simple-html-dom": "1.5.0"
     }
 }

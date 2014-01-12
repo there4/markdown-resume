@@ -45,8 +45,8 @@ function run_version() {
 }
 
 function run_version_file() {
-    $composer = json_decode(file_get_contents('composer.json'));
-    file_put_contents('./version', $composer->version);
+    $version = trim(shell_exec('git describe --abbrev=0 --tags'));
+    file_put_contents('./version', $version);
 }
 
 function run_lint() {
