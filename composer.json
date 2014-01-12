@@ -2,7 +2,11 @@
     "name": "there4/markdown-resume",
     "description": "Markdown Resume Generator",
     "homepage": "https://github.com/there4/markdown-resume",
-    "keywords": ["markdown", "resume", "html5"],
+    "keywords": [
+        "markdown",
+        "resume",
+        "html5"
+    ],
     "license": "MIT",
     "version": "2.0.0",
     "selfupdatepath": "://github.com/there4/markdown-resume/raw/master/bin/md2resume",
@@ -12,17 +16,21 @@
             "name": "Craig Davis",
             "email": "craig@there4development.com",
             "role": "Developer"
-        }, {
+        },
+        {
             "name": "Kaiwen Xu",
             "email": "kevin@kevxu.net",
             "role": "Contributor"
-        }, {
+        },
+        {
             "name": "ishitcno1",
             "role": "Contributor"
-        }, {
+        },
+        {
             "name": "Roland O'Leary",
             "role": "Contributor"
-        }, {
+        },
+        {
             "name": "Abhishek Kandoi",
             "email": "abhikandoi2000@gmail.com",
             "role": "Contributor"
@@ -33,16 +41,16 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "symfony/console": "v2.3.4",
-        "symfony/config": "v2.3.4",
-        "symfony/yaml": "v2.3.4",
+        "kriswallsmith/assetic": "1.1.2",
         "leafo/lessphp": "v0.4.0",
         "michelf/php-markdown": "1.4.0",
-        "twig/twig": "v1.13.2",
-        "mustache/mustache": "2.5.1",
         "michelf/php-smartypants": "1.6.0-beta1",
+        "mustache/mustache": "2.5.1",
         "simple-html-dom/simple-html-dom": "1.5.0",
-        "kriswallsmith/assetic": "1.1.2"
+        "symfony/config": "v2.3.4",
+        "symfony/console": "v2.3.4",
+        "symfony/yaml": "v2.3.4",
+        "twig/twig": "v1.13.2"
     },
     "autoload": {
         "classmap": [

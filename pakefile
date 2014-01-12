@@ -45,8 +45,14 @@ function run_version() {
 }
 
 function run_version_file() {
+    // Find the latest tag
     $version = trim(shell_exec('git describe --abbrev=0 --tags'));
+    // Write it to the version file for the self update command
     file_put_contents('./version', $version);
+    // Write it to the composer.json file as well
+    $config = json_decode(file_get_contents('composer.json'));
+    $config->version = $version;
+    file_put_contents('composer.json', json_encode($config, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 }
 
 function run_lint() {

@@ -1,15 +1,5 @@
 # Markdown Resume Generator
 
-2.0 Work in progress, unstable and not yet ready for use.
-
-- [x] Update composer for symfony dependencies
-- [ ] Add pake and phar generator
-- [ ] Update bin with new generated phar
-- [x] Convert to new command structure
-- [ ] Update help files
-
-## Description
-
 Turn a simple Markdown document into an elegant resume with both a perfect
 pdf printable format, and a responsive css3 html5 file. You can view a sample
 at the [blog post for the project][blog].
@@ -51,7 +41,7 @@ at the [blog post for the project][blog].
       html         Generate an HTML resume from a markdown file
       list         Lists commands
       pdf          Generate a PDF from a markdown file
-      selfupdate   Updates fb.phar to the latest version.
+      selfupdate   Updates md2resume.phar to the latest version.
       templates    List available templates
       version      Show current version information
     
