@@ -44,6 +44,7 @@ at the [blog post for the project][blog].
       list         Lists commands
       pdf          Generate a PDF from a markdown file
       selfupdate   Updates md2resume.phar to the latest version.
+      stats        Generate a word frequency analysis of your resume
       templates    List available templates
       version      Show current version information
     

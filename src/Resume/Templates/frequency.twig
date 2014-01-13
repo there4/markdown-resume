@@ -1,0 +1,24 @@
+————————————————————————————————————————————————————————————————————————————————
+<heading> Word Frequency Analysis                                                            </heading>
+————————————————————————————————————————————————————————————————————————————————
+
+<comment>Triple Word Phrases:</comment>
+{% for phrase, frequency in triple %}
+{% if frequency > 1%}
+{{frequency|style("info")|pad(3, "right")}} {{phrase}}
+{% endif  %}
+{% endfor %}
+
+<comment>Double Word Phrases:</comment>
+{% for phrase, frequency in double %}
+{% if frequency > 1%}
+{{frequency|style("info")|pad(3, "right")}} {{phrase}}
+{% endif  %}
+{% endfor %}
+
+<comment>Single Words:</comment>
+{% for phrase, frequency in single %}
+{% if frequency > 1%}
+{{frequency|style("info")|pad(3, "right")}} {{phrase}}
+{% endif  %}
+{% endfor %}

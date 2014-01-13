@@ -38,6 +38,7 @@ class Resume extends Application
         $this->add(new Command\HtmlCommand());
         $this->add(new Command\PdfCommand());
         $this->add(new Command\SelfUpdateCommand());
+        $this->add(new Command\StatsCommand());
         $this->add(new Command\TemplatesCommand());
         $this->add(new Command\VersionCommand());
 
