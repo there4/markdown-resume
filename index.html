@@ -28,48 +28,144 @@
         </ul>
       </header>
       <section>
-        <h2>Features</h2>
+        <p><a href="https://travis-ci.org/there4/markdown-resume"><img src="https://travis-ci.org/there4/markdown-resume.png?branch=master" alt="Build Status"></a></p>
+
+<h1>
+<a name="markdown-resume-generator" class="anchor" href="#markdown-resume-generator"><span class="octicon octicon-link"></span></a>Markdown Resume Generator</h1>
+
+<p>Turn a simple Markdown document into an elegant resume with both a perfect
+pdf printable format, and a responsive css3 html5 file. You can view a sample
+at the <a href="http://there4development.com/blog/2012/12/31/markdown-resume-builder/">blog post for the project</a>.</p>
+
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
 
 <ul>
-<li>Turn a simple Markdown document into an elegant resume.</li>
-<li>PDF generation via <code>wkhtmltopdf</code>
+<li>Three styles to choose from: modern, blockish, unstyled (Fork and add more!)</li>
+<li>PDF generation via <a href="https://github.com/pdfkit/pdfkit/wiki/Installing-WKHTMLTOPDF">wkhtmltopdf</a>
 </li>
 <li>Responsive design for multiple device viewport sizes</li>
 <li>Simple Markdown formatting</li>
-<li>Single file deployment</li>
+<li>Single file deployment (no external stylesheets)</li>
 <li>You can now version control and branch your resume.</li>
-</ul><h2>Quickstart</h2>
+</ul><h2>
+<a name="quickstart" class="anchor" href="#quickstart"><span class="octicon octicon-link"></span></a>Quickstart</h2>
 
-<pre><code>php ./build/build.php --source resume/sample.md
-php ./build/build.php --source resume/sample.md --pdf
+<p>There is no installation or need to run composer. Just run the phar file:</p>
+
+<pre><code>./bin/md2resume html examples/source/sample.md examples/output/
+./bin/md2resume pdf examples/source/sample.md examples/output/
 </code></pre>
 
-<h2>Options</h2>
+<h2>
+<a name="help" class="anchor" href="#help"><span class="octicon octicon-link"></span></a>Help</h2>
+
+<pre><code>Markdown Resume Generator version 2.0.0 by Craig Davis
+
+Usage:
+  [options] command [arguments]
+
+Options:
+  --help           -h Display this help message.
+  --quiet          -q Do not output any message.
+  --verbose        -v|vv|vvv Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+  --version        -V Display this application version.
+  --ansi              Force ANSI output.
+  --no-ansi           Disable ANSI output.
+  --no-interaction -n Do not ask any interactive question.
+
+Available commands:
+  help         Displays help for a command
+  html         Generate an HTML resume from a markdown file
+  list         Lists commands
+  pdf          Generate a PDF from a markdown file
+  selfupdate   Updates md2resume.phar to the latest version.
+  templates    List available templates
+  version      Show current version information
+</code></pre>
+
+<h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>Choose a template with the -t option.</p>
+
+<pre><code>./bin/md2resume html --template blockish examples/source/sample.md examples/output/
+</code></pre>
 
 <p>If you want to edit your markdown resume in your editor while watching it
 update in your browser, run this command:</p>
 
-<pre><code>watch php ./build/build.php -s resume/sample.md -r
+<pre><code>watch ./bin/md2resume html --refresh examples/source/sample.md examples/output/
 </code></pre>
 
-<p>This makes the build script run when the file changes, and html document will
-refresh every two seconds. Open the <code>./ouput/sample.html</code> file in your browser,
-and then just save your markdown document when you want to see a fresh preview.</p>
+<p>This makes the build script run periodically, and html document will refresh
+every two seconds via a meta tag. Open the <code>./examples/ouput/sample.html</code> file
+in your browser, and then just save your markdown document when you want to see
+a fresh preview.</p>
 
-<h2>Development</h2>
+<h2>
+<a name="authoring-your-resume" class="anchor" href="#authoring-your-resume"><span class="octicon octicon-link"></span></a>Authoring Your Resume</h2>
 
-<p>Markdown is limited to basic html markup. Follow the <code>resume/sample.md</code> file 
-as a guideline. This file includes various headers and several nested elements.
-This allows us to construct a semantic HTML document for the resume, and then
-use a CSS rules to display a very nice resume. Note that because we have very
-few ways to nest or identify elements that many of the css rules are based
-on descendant and adjacent selectors. </p>
+<p>Markdown is limited to basic html markup. Follow the <code>examples/source/sample.md</code>
+file  as a guideline. This file includes various headers and several nested
+elements. This allows us to construct a semantic HTML document for the resume,
+and then use CSS rules to display a nicely formatted resume. Note that because
+we have very few ways to nest or identify elements that many of the css rules
+are based on descendant and adjacent selectors. </p>
 
-<h2>Acknowledgments</h2>
+<p><strong>PLEASE NOTE</strong>: The templates are compiled into the phar archive in the <code>./bin</code>
+folder. If you intend to edit the templates or add new ones, you'll need to run
+this application in the dev mode. See below for more information about doing
+this.</p>
 
-<p>The initial inspiration is from the <a href="http://sampleresumetemplate.net/">Sample Resume Template</a>.
-However, no HTML from that project has been used in this. General layout has been reused, and media queries
-have been added. It's a nice template, and if you are a more comfortable with html than markdown, you should use it.</p>
+<h2>
+<a name="feature-development" class="anchor" href="#feature-development"><span class="octicon octicon-link"></span></a>Feature Development</h2>
+
+<p>The application is deployed as a compiled phar file. In order to add new
+commands, you'll need to first install the dependencies:</p>
+
+<ul>
+<li><code>composer install</code></li>
+<li><code>pear install PHP_CodeSniffer</code></li>
+<li><a href="https://github.com/indeyets/pake/wiki/Installing-Pake">install pake</a></li>
+</ul><p>After that, you can run the <code>md2resume_dev.php</code> file from the command line.
+Check out the pake tooling for more information about the build.</p>
+
+<h2>
+<a name="acknowledgments" class="anchor" href="#acknowledgments"><span class="octicon octicon-link"></span></a>Acknowledgments</h2>
+
+<p>The initial inspiration is from the <a href="http://sampleresumetemplate.net/" title="A great starting point">Sample Resume Template</a>.
+However, no HTML from that project has been used in this. General layout has
+been reused, and media queries have been added. It's a nice template, and if you
+are a more comfortable with html than markdown, you should use it.</p>
+
+<h2>
+<a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
+
+<ul>
+<li>
+<strong>2.0.0</strong> : Complete rewrite with the <a href="http://symfony.com/doc/current/components/console/introduction.html">symfony console component</a>.
+Deployment is now done with a compiled phar file, and development dependencies
+are managed with composer.</li>
+<li>
+<strong>0.9.0</strong> : Add composer and update README with new changelog</li>
+<li>
+<strong>0.8.8</strong> : Add Chinese text example (<a href="https://github.com/ishitcno1" class="user-mention">@ishitcno1</a>)</li>
+<li>
+<strong>0.8.7</strong> : Update pdf formatting of the modern template (<a href="https://github.com/roleary" class="user-mention">@roleary</a>)</li>
+<li>
+<strong>0.8.6</strong> : Fix output path (<a href="https://github.com/abhikandoi2000" class="user-mention">@abhikandoi2000</a>)</li>
+<li>
+<strong>0.8.5</strong> : Fix issue #2</li>
+<li>
+<strong>0.8.4</strong> : Correct chmod and add parameter for output directory (<a href="https://github.com/kevinxucs" class="user-mention">@kevinxucs</a>)</li>
+<li>
+<strong>0.8.2</strong> : Update build script and add refresh command option</li>
+<li>
+<strong>0.8.1</strong> : Updating formatting of initial templates</li>
+<li>
+<strong>0.8</strong> : Initial Release to Public </li>
+</ul>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/there4">there4</a></p>
