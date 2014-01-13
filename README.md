@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/there4/markdown-resume.png?branch=master)](https://travis-ci.org/there4/markdown-resume)
+
 # Markdown Resume Generator
 
 Turn a simple Markdown document into an elegant resume with both a perfect
