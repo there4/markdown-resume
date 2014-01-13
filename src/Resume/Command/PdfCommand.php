@@ -28,7 +28,7 @@ class PdfCommand extends HtmlCommand
             ->addOption(
                 'template',
                 't',
-                InputOption::VALUE_NONE,
+                InputOption::VALUE_OPTIONAL,
                 'Which of the templates to use'
             );
     }

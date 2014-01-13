@@ -97,7 +97,7 @@ are a more comfortable with html than markdown, you should use it.
 ## Changelog
 
 * __2.0.0__ : Complete rewrite with the [symfony console component][console].
-  Deployment is no done with a compiled phar file, and development dependencies
+  Deployment is now done with a compiled phar file, and development dependencies
   are managed with composer.
 * __0.9.0__ : Add composer and update README with new changelog
 * __0.8.8__ : Add Chinese text example (@ishitcno1)
