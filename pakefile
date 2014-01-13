@@ -93,25 +93,16 @@ function run_fixer()
 function run_readme()
 {
     echo " * Updating README documentation\n";
-    $readme = file("README.md");
-    $help = explode("\n", shell_exec("php ./md2resume_dev.php list --no-interaction"));
 
-    $helpStart = $helpEnd = 0;
-    foreach ($readme as $lineNumber => $line) {
-      if (trim($line) == "## Help") {
-          $helpStart = $lineNumber;
-          continue;
-      }
-      if ($helpStart && (substr(trim($line), 0, 2) == "##")) {
-          $helpEnd = $lineNumber;
-          break;
-      }
-    }
-
-    $output = join(array_slice($readme, 0, $helpStart + 1));
-    $output .= "\n    " . implode("\n    ", $help) . "\n";
-    $output .= join(array_slice($readme, $helpEnd));
-
+    $startPoint = '## Help';
+    $endPoint   = '## Examples';
+    $readme     = file_get_contents("README.md");
+    $help       = shell_exec("php ./md2resume_dev.php list --no-interaction");
+    $output     = preg_replace(
+        '/('.preg_quote($startPoint).')(.*)('.preg_quote($endPoint).')/si',
+        "$1\n```\n" . $help . "\n```\n $3",
+        $readme
+    );
     file_put_contents("README.md", $output);
 }
 

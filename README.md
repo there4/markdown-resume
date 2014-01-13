@@ -23,32 +23,33 @@ at the [blog post for the project][blog].
     ./bin/md2resume pdf examples/source/sample.md examples/output/
 
 ## Help
+```
+Markdown Resume Generator version 2.0.0 by Craig Davis
 
-    Markdown Resume Generator version 2.0.0 by Craig Davis
-    
-    Usage:
-      [options] command [arguments]
-    
-    Options:
-      --help           -h Display this help message.
-      --quiet          -q Do not output any message.
-      --verbose        -v|vv|vvv Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
-      --version        -V Display this application version.
-      --ansi              Force ANSI output.
-      --no-ansi           Disable ANSI output.
-      --no-interaction -n Do not ask any interactive question.
-    
-    Available commands:
-      help         Displays help for a command
-      html         Generate an HTML resume from a markdown file
-      list         Lists commands
-      pdf          Generate a PDF from a markdown file
-      selfupdate   Updates md2resume.phar to the latest version.
-      stats        Generate a word frequency analysis of your resume
-      templates    List available templates
-      version      Show current version information
-    
-## Examples
+Usage:
+  [options] command [arguments]
+
+Options:
+  --help           -h Display this help message.
+  --quiet          -q Do not output any message.
+  --verbose        -v|vv|vvv Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+  --version        -V Display this application version.
+  --ansi              Force ANSI output.
+  --no-ansi           Disable ANSI output.
+  --no-interaction -n Do not ask any interactive question.
+
+Available commands:
+  help         Displays help for a command
+  html         Generate an HTML resume from a markdown file
+  list         Lists commands
+  pdf          Generate a PDF from a markdown file
+  selfupdate   Updates md2resume.phar to the latest version.
+  stats        Generate a word frequency analysis of your resume
+  templates    List available templates
+  version      Show current version information
+
+```
+ ## Examples
 
 Choose a template with the -t option.
 
