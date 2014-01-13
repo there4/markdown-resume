@@ -68,6 +68,7 @@ function run_phar()
         . 'php -dphar.readonly=0 build/empir make ./bin/md2resume.phar md2resume_dev.php . --exclude="'
         . '*.git/*|*.gitignore|*test*|*Tests*|*.md|*/doc/*|*.lock|*token.txt|pakefile'
         . '|.*|build/*|*.markdown|*.phar|*LICENSE|*AUTHORS|*CHANGELOG|*.dist|*.tpl|.travis.yml'
+        . '|*squizlabs*|*fabpot*'
         . '" && chmod a+x ./bin/md2resume.phar'
         . ' && mv ./bin/md2resume.phar ./bin/md2resume';
     passthru($command);
@@ -76,16 +77,16 @@ function run_phar()
 function run_sniff()
 {
     echo " * Checking files for PSR2\n";
-    passthru("phpcs -p --standard=PSR2 ./src/ ./md2resume_dev.php");
+    passthru("./vendor/bin/phpcs -p --standard=PSR2 ./src/ ./md2resume_dev.php");
 }
 
 function run_fixer()
 {
     echo "\n * Running php-cs-fixer\n";
     passthru(
-        "php-cs-fixer fix ./md2resume_dev.php"
-        . " && php-cs-fixer fix ./src/Resume/Cli/"
-        . " && php-cs-fixer fix ./src/Resume/Command/"
+        "./vendor/bin/php-cs-fixer fix ./md2resume_dev.php"
+        . " && ./vendor/bin/php-cs-fixer fix ./src/Resume/Cli/"
+        . " && ./vendor/bin/php-cs-fixer fix ./src/Resume/Command/"
     );
 }
 

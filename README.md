@@ -1,10 +1,10 @@
-[![Build Status](https://travis-ci.org/there4/markdown-resume.png?branch=master)](https://travis-ci.org/there4/markdown-resume)
-
 # Markdown Resume Generator
 
 Turn a simple Markdown document into an elegant resume with both a perfect
 pdf printable format, and a responsive css3 html5 file. You can view a sample
 at the [blog post for the project][blog].
+
+[![Build Status](https://travis-ci.org/there4/markdown-resume.png?branch=master)](https://travis-ci.org/there4/markdown-resume)
 
 ## Features
 
@@ -83,7 +83,6 @@ The application is deployed as a compiled phar file. In order to add new
 commands, you'll need to first install the dependencies:
 
 * `composer install`
-* `pear install PHP_CodeSniffer`
 * [install pake][pake]
 
 After that, you can run the `md2resume_dev.php` file from the command line.

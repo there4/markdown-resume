@@ -7,7 +7,6 @@ use Resume\Cli\Resume;
 
 class ResumeTest extends \PHPUnit_Framework_TestCase
 {
-
     public $console;
 
     public function setUp()

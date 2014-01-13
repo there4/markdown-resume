@@ -12,7 +12,6 @@ use Resume\Command;
 
 class Resume extends Application
 {
-
     public $defaultTemplate = 'modern';
 
     public $recentCaseLimit = 10;

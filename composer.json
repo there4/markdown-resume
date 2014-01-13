@@ -43,10 +43,12 @@
     "require": {
         "kriswallsmith/assetic": "1.1.2",
         "leafo/lessphp": "v0.4.0",
+        "fabpot/php-cs-fixer": "0.4.0",
         "michelf/php-markdown": "1.4.0",
         "michelf/php-smartypants": "1.6.0-beta1",
         "mustache/mustache": "2.5.1",
         "simple-html-dom/simple-html-dom": "1.5.0",
+        "squizlabs/php_codesniffer": "1.*",
         "symfony/config": "v2.3.4",
         "symfony/console": "v2.3.4",
         "symfony/yaml": "v2.3.4",
@@ -56,5 +58,8 @@
         "classmap": [
             "vendor/simple-html-dom/simple-html-dom/"
         ]
-    }
+    },
+    "bin": [
+        "bin/md2resume"
+    ]
 }
