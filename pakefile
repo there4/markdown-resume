@@ -100,7 +100,7 @@ function run_readme()
     $help       = shell_exec("php ./md2resume_dev.php list --no-interaction");
     $output     = preg_replace(
         '/('.preg_quote($startPoint).')(.*)('.preg_quote($endPoint).')/si',
-        "$1\n```\n" . $help . "\n```\n $3",
+        "$1\n```\n" . $help . "\n```\n$3",
         $readme
     );
     file_put_contents("README.md", $output);

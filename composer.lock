@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7c8fb9a08e3469fc9aaf81003b3ba5b3",
+    "hash": "bb09d0f04bf284a55264394434efff69",
     "packages": [
         {
             "name": "fabpot/php-cs-fixer",
@@ -811,9 +811,9 @@
 
     ],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "michelf/php-smartypants": 10
-    },
+    "stability-flags": [
+
+    ],
     "platform": [
 
     ],
