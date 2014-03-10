@@ -59,7 +59,7 @@ If you want to edit your markdown resume in your editor while watching it
 update in your browser, run this command:
 
     watch ./bin/md2resume html --refresh examples/source/sample.md examples/output/
-    
+
 This makes the build script run periodically, and html document will refresh
 every two seconds via a meta tag. Open the `./examples/ouput/sample.html` file
 in your browser, and then just save your markdown document when you want to see
@@ -72,7 +72,7 @@ file  as a guideline. This file includes various headers and several nested
 elements. This allows us to construct a semantic HTML document for the resume,
 and then use CSS rules to display a nicely formatted resume. Note that because
 we have very few ways to nest or identify elements that many of the css rules
-are based on descendant and adjacent selectors. 
+are based on descendant and adjacent selectors.
 
 __PLEASE NOTE__: The templates are compiled into the phar archive in the `./bin`
 folder. If you intend to edit the templates or add new ones, you'll need to run
@@ -99,6 +99,7 @@ are a more comfortable with html than markdown, you should use it.
 
 ## Changelog
 
+* __2.0.1__ : Add new `swissen` template with Helvetica styling (@beautifulcode)
 * __2.0.0__ : Complete rewrite with the [symfony console component][console].
   Deployment is now done with a compiled phar file, and development dependencies
   are managed with composer.
@@ -110,7 +111,7 @@ are a more comfortable with html than markdown, you should use it.
 * __0.8.4__ : Correct chmod and add parameter for output directory (@kevinxucs)
 * __0.8.2__ : Update build script and add refresh command option
 * __0.8.1__ : Updating formatting of initial templates
-* __0.8__ : Initial Release to Public 
+* __0.8__ : Initial Release to Public
 
 [srt]: http://sampleresumetemplate.net/ "A great starting point"
 [blog]: http://there4development.com/blog/2012/12/31/markdown-resume-builder/
