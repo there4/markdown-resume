@@ -51,7 +51,7 @@ class HtmlCommand extends Command
     {
         $this->app    = $this->getApplication();
         $source       = $input->getArgument('source');
-        $destination  = trim($input->getArgument('destination'), DIRECTORY_SEPARATOR);
+        $destination  = rtrim($input->getArgument('destination'), DIRECTORY_SEPARATOR);
         $template     = $input->getOption('template');
         $refresh      = $input->getOption('refresh');
         $destFilename = join(DIRECTORY_SEPARATOR, array($destination, pathinfo($source, PATHINFO_FILENAME) . '.html'));

@@ -36,7 +36,7 @@ class PdfCommand extends HtmlCommand
     {
         $this->app    = $this->getApplication();
         $source       = $input->getArgument('source');
-        $destination  = trim($input->getArgument('destination'), DIRECTORY_SEPARATOR);
+        $destination  = rtrim($input->getArgument('destination'), DIRECTORY_SEPARATOR);
         $template     = $input->getOption('template');
         $pdfSource    = join(DIRECTORY_SEPARATOR, array($destination, '.tmp_pdf_source.html'));
         $destFilename = join(DIRECTORY_SEPARATOR, array($destination, pathinfo($source, PATHINFO_FILENAME) . '.pdf'));
