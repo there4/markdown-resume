@@ -39,9 +39,11 @@ class HtmlCommand extends Command
             ->addOption(
                 'refresh',
                 'r',
-                InputOption::VALUE_NONE,
-                'If set, the html will include a meta command to refresh the ' .
-                'document every 5 seconds.'
+                InputOption::VALUE_OPTIONAL,
+                'Regenerate the html and include a meta command to refresh the ' .
+                'document every periodically. Measured in seconds. Defaults to' .
+                '5 seconds',
+                5
             );
     }
 
@@ -58,7 +60,7 @@ class HtmlCommand extends Command
         file_put_contents($destFilename, $rendered);
         $output->writeln(
             sprintf(
-                "Wrote resume to: <info>%s</info>",
+                'Wrote resume to: <info>%s</info>',
                 $destFilename
             ),
             $this->app->outputFormat
@@ -73,7 +75,7 @@ class HtmlCommand extends Command
         if (!file_exists($source)) {
             $output->writeln(
                 sprintf(
-                    "<error>Unable to open source file: %s</error>",
+                    '<error>Unable to open source file: %s</error>',
                     $source
                 ),
                 $this->app->outputFormat
@@ -91,7 +93,7 @@ class HtmlCommand extends Command
         if (!file_exists($templateIndexPath)) {
             $output->writeln(
                 sprintf(
-                    "<error>Unable to open template file: %s</error>",
+                    '<error>Unable to open template file: %s</error>',
                     $templateIndexPath
                 ),
                 $this->app->outputFormat
@@ -127,7 +129,7 @@ class HtmlCommand extends Command
         $resumeHtml = MarkdownExtra::defaultTransform($resumeContent);
         $resumeHtml = SmartyPants::defaultTransform($resumeHtml);
 
-        // We'll construct the title for the html document from the h1 and h2 tags
+        // Construct the title for the html document from the h1 and h2 tags
         $simpleDom = new \simple_html_dom();
         $simpleDom->load($resumeHtml);
         $title = sprintf(
@@ -136,17 +138,15 @@ class HtmlCommand extends Command
             $simpleDom->find('h2', 0)->innertext
         );
 
-        // We'll now render the Markdown into an html file with Mustache Templates
+        // Render the Markdown into an html file with Mustache Templates
         $m = new \Mustache_Engine;
-        $rendered = $m->render(
-            $templateContent,
-            array(
-                'title'  => $title,
-                'style'  => $style,
-                'resume' => $resumeHtml,
-                'reload' => $refresh
-            )
-        );
+        $rendered = $m->render($templateContent, array(
+            'title'        => $title,
+            'style'        => $style,
+            'resume'       => $resumeHtml,
+            'reload'       => (bool) $refresh,
+            'refresh_rate' => $refresh
+        ));
 
         return $rendered;
     }
