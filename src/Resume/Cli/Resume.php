@@ -68,7 +68,8 @@ class Resume extends Application
         return parent::getLongVersion().' by <comment>Craig Davis</comment>';
     }
 
-    public function checkDependencies() {
+    public function checkDependencies()
+    {
         $output = new ConsoleOutput();
         if (!extension_loaded('mbstring')) {
             $output->writeln(
@@ -76,7 +77,7 @@ class Resume extends Application
                 "More help: http://www.php.net/manual/en/mbstring.installation.php\n",
                 $this->outputFormat
             );
-        exit(1);
+            exit(1);
         }
     }
 
