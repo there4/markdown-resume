@@ -24,7 +24,7 @@ at the [blog post for the project][blog].
 
 ## Help
 ```
-Markdown Resume Generator version 2.0.2 by Craig Davis
+Markdown Resume Generator version 2.0.3 by Craig Davis
 
 Usage:
   [options] command [arguments]
@@ -100,6 +100,7 @@ are a more comfortable with html than markdown, you should use it.
 
 ## Changelog
 
+* __2.0.3__ : Add optional duration to the `--refresh` option to close #15
 * __2.0.2__ : Add new dependency check for `mbstring` to close #20
 * __2.0.1__ : Add new `swissen` template with Helvetica styling (@beautifulcode)
 * __2.0.0__ : Complete rewrite with the [symfony console component][console].
