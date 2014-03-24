@@ -16,7 +16,7 @@ $app->add('Resume', __DIR__ . '/src');
 $console = new Resume\Cli\Resume();
 
 // If we're running from phar, we get these values from the stub
-if (!defined("IN_PHAR")) {
+if (!defined('IN_PHAR')) {
     $project = json_decode(file_get_contents(__DIR__ . '/composer.json'));
 }
 
