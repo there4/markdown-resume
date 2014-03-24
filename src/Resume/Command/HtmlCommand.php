@@ -73,15 +73,7 @@ class HtmlCommand extends Command
     {
         // Check that the source file is sane
         if (!file_exists($source)) {
-            $output->writeln(
-                sprintf(
-                    '<error>Unable to open source file: %s</error>',
-                    $source
-                ),
-                $this->app->outputFormat
-            );
-
-            return false;
+            throw new \Exception("Unable to open source file: $source");
         }
 
         // Check that our template is sane, or set to the default one
@@ -90,16 +82,9 @@ class HtmlCommand extends Command
         }
         $templatePath = join(DIRECTORY_SEPARATOR, array($this->app->templatePath, basename($template)));
         $templateIndexPath = join(DIRECTORY_SEPARATOR, array($templatePath, 'index.html'));
-        if (!file_exists($templateIndexPath)) {
-            $output->writeln(
-                sprintf(
-                    '<error>Unable to open template file: %s</error>',
-                    $templateIndexPath
-                ),
-                $this->app->outputFormat
-            );
 
-            return false;
+        if (!file_exists($templateIndexPath)) {
+            throw new \Exception("Unable to open template file: $templateIndexPath");
         }
 
         // We build these into a single string so that we can deploy this resume as a
