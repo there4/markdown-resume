@@ -30,6 +30,9 @@ class Resume extends Application
         // the alternative is OutputInterface::OUTPUT_PLAIN;
         $this->outputFormat = OutputInterface::OUTPUT_NORMAL;
 
+        // Exits on missing dependencies
+        $this->checkDependencies();
+
         // We do this now because we've loaded the project info from the composer file
         $this->setName($this->project->description);
         $this->setVersion($this->project->version);
@@ -63,6 +66,19 @@ class Resume extends Application
     public function getLongVersion()
     {
         return parent::getLongVersion().' by <comment>Craig Davis</comment>';
+    }
+
+    public function checkDependencies()
+    {
+        $output = new ConsoleOutput();
+        if (!extension_loaded('mbstring')) {
+            $output->writeln(
+                "\n<error>Missing Dependency: Please install the Multibyte String Functions.</error>\n" .
+                "More help: http://www.php.net/manual/en/mbstring.installation.php\n",
+                $this->outputFormat
+            );
+            exit(1);
+        }
     }
 
     public function registerStyles(&$output)

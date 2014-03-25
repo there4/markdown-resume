@@ -24,7 +24,7 @@ at the [blog post for the project][blog].
 
 ## Help
 ```
-Markdown Resume Generator version 2.0.1 by Craig Davis
+Markdown Resume Generator version 2.0.4 by Craig Davis
 
 Usage:
   [options] command [arguments]
@@ -85,10 +85,11 @@ The application is deployed as a compiled phar file. In order to add new
 commands, you'll need to first install the dependencies:
 
 * `composer install`
-* [install pake][pake]
 
 After that, you can run the `md2resume_dev.php` file from the command line.
-Check out the pake tooling for more information about the build.
+Check out the pake tooling for more information about the build. Pake will be
+installed to `./vendor/bin/pake`. So for instance a complete phar file build
+looks like `./vendor/bin/pake build`.
 
 ## Acknowledgments
 
@@ -99,6 +100,9 @@ are a more comfortable with html than markdown, you should use it.
 
 ## Changelog
 
+* __2.0.4__ : Fix path resolution problem with absolute paths to close #16
+* __2.0.3__ : Add optional duration to the `--refresh` option to close #15
+* __2.0.2__ : Add new dependency check for `mbstring` to close #20
 * __2.0.1__ : Add new `swissen` template with Helvetica styling (@beautifulcode)
 * __2.0.0__ : Complete rewrite with the [symfony console component][console].
   Deployment is now done with a compiled phar file, and development dependencies
