@@ -18,11 +18,16 @@ class TemplatesCommand extends Command
     {
         $this->app = $this->getApplication();
         $tplData = array('templates' => array());
-        foreach (glob($this->app->templatePath . '/*', GLOB_ONLYDIR) as $dir) {
+        foreach (new \DirectoryIterator($this->app->templatePath) as $fileInfo) {
+            if ($fileInfo->isDot() || !$fileInfo->isDir()) {
+                continue;
+            }
+            $descriptionPath = $fileInfo->getPathname() . '/description.txt';
+            print $descriptionPath . "\n";
             $tplData['templates'][] = (object) array(
-                'name' => basename($dir),
-                'description' => file_exists($dir . '/description.txt')
-                    ? trim(file_get_contents($dir . '/description.txt'))
+                'name' => $fileInfo->getBasename(),
+                'description' => file_exists($descriptionPath)
+                    ? trim(file_get_contents($descriptionPath))
                     : 'No description available'
             );
         }
