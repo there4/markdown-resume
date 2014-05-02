@@ -33,17 +33,15 @@ class HtmlCommand extends Command
             ->addOption(
                 'template',
                 't',
-                InputOption::VALUE_OPTIONAL,
+                InputOption::VALUE_REQUIRED,
                 'Which of the templates to use'
             )
             ->addOption(
                 'refresh',
                 'r',
-                InputOption::VALUE_OPTIONAL,
+                InputOption::VALUE_REQUIRED,
                 'Regenerate the html and include a meta command to refresh the ' .
-                'document every periodically. Measured in seconds. Defaults to' .
-                '5 seconds',
-                5
+                'document every periodically. Measured in seconds.'
             );
     }
 
