@@ -32,17 +32,15 @@ h1, h2, h3, h4, ul dl dt {
 	padding: 10px 20px;
 }
 
-a {
-	color: #990003;
-	display: block;
-}
-
 a[href$='.pdf'] {
 	background: #666;
 	color: white;
 	padding: 6px 12px;
 	margin-bottom: 6px;
 	text-decoration: none;
+	position: absolute;
+	top: 15px;
+	right: 25px;
 }
 a[href*='github'] {
 	background: #000;
@@ -50,6 +48,14 @@ a[href*='github'] {
 	padding: 6px 12px;
 	margin-bottom: 6px;
 	text-decoration: none;
+	position: absolute;
+	top: 45px;
+	right: 25px;
+
+	&:hover {
+		background: white;
+		color: #000;
+	}
 }
 
 p {
@@ -60,6 +66,11 @@ blockquote {
 	margin: 0;
 	padding: 0;
 	line-height: 1.4em;
+}
+
+blockquote a {
+	color: #990003;
+	display: block;
 }
 
 hr {
@@ -99,27 +110,39 @@ h2 {
 }
 
 h3 {
+	.drop-shadow();
 	margin: 0;
-	padding: 0 0 .5em;
+	padding: .25em 0 .25em .3em;
 	font-size: 2em;
 	font-style: italic;
 	font-weight: normal;
+	border-bottom: 5px solid rgba(0,0,0,.8);
 }
 
 h3+p,
-h3+ul {
+h3~ul {
 	margin: .2em 0 1.2em;
 	padding: 0;
 	display: block;
 	/*font-size: 1.1em;*/
 	line-height: 24px;
 }
-h3+ul {
+h3~ul {
 	padding-left: 1.5em;
 }
 
 h4 {
 	font-size: 1.5em;
+}
+
+#experience ~ dl {
+	dt {
+		float: left;
+	}
+	dd {
+		float: right;
+		width: 35%;
+	}
 }
 
 ul li {
@@ -129,8 +152,9 @@ ul li {
 }
 
 ul li ul li {
-	font-size: 1.1em;
+	font-size: 1em;
 	font-style: italic;
+	margin: 0 0 0 1.5em;
 }
 
 ul dl {
@@ -160,7 +184,7 @@ ol li {
 	padding: 0;
 	border-top: 1px solid #CCCCCC;
 	width: 100%;
-	float: left;
+	/*float: left;*/
 	list-style: none;
 	line-height: 2em;
 	font-size: 1.1em;
@@ -171,7 +195,7 @@ ol li:nth-child(1) {
 
 dl {
 	display: inline-block;
-	width: 75%;
+	width: 90%;
 	margin: 0;
 	padding: 0;
 	dt {
@@ -180,23 +204,20 @@ dl {
 		/*font-size: 1.4em;*/
 	}
 	dd {
-		margin: 0 0 1.5em;
 		padding: 0;
 		font-size: 0.8em;
-		line-height: 1.4em;
 	}
 	strong {
 		display: block;
+		font-size: 1.2em;
 	}
 	em {
 		display: block;
-		font-size: 1.1em;
+		font-size: 1.2em;
 		margin: .15em 0 .5em;
-		font-style: bold;
 	}
 
 }
-
 
 #footer {
 	display: none;
