@@ -11,6 +11,7 @@ use Assetic\Asset\FileAsset;
 use Assetic\Filter;
 use Michelf\MarkdownExtra;
 use Michelf\SmartyPants;
+use Sunra\PhpSimple\HtmlDomParser;
 
 class HtmlCommand extends Command
 {
@@ -113,8 +114,7 @@ class HtmlCommand extends Command
         $resumeHtml = SmartyPants::defaultTransform($resumeHtml);
 
         // Construct the title for the html document from the h1 and h2 tags
-        $simpleDom = new \simple_html_dom();
-        $simpleDom->load($resumeHtml);
+        $simpleDom = HtmlDomParser::str_get_html($resumeHtml);
         $title = sprintf(
             '%s | %s',
             $simpleDom->find('h1', 0)->innertext,
