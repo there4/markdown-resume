@@ -68,7 +68,8 @@ class HtmlCommand extends Command
         return true;
     }
 
-    protected function generateContent($templatePath, $contentType) {
+    protected function generateContent($templatePath, $contentType)
+    {
         // We build these into a single string so that we can deploy this resume as a
         // single file.
         $assetPath = join(DIRECTORY_SEPARATOR, array($templatePath, $contentType));
@@ -91,11 +92,12 @@ class HtmlCommand extends Command
             $assets
         );
 
-        switch($contentType) {
+        switch ($contentType) {
             case 'css':
                 $collection->ensureFilter(new Filter\LessphpFilter());
                 break;
         }
+
         return $collection->dump();
     }
 
