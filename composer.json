@@ -8,7 +8,7 @@
         "html5"
     ],
     "license": "MIT",
-    "version": "2.0.6",
+    "version": "2.0.7",
     "selfupdatepath": "://github.com/there4/markdown-resume/raw/master/bin/md2resume",
     "selfupdateversion": "://github.com/there4/markdown-resume/raw/master/version",
     "authors": [
@@ -49,17 +49,12 @@
         "michelf/php-smartypants": "1.6.0-beta1",
         "mustache/mustache": "2.5.1",
         "phpunit/phpunit": "3.7.*",
-        "simple-html-dom/simple-html-dom": "1.5.0",
         "squizlabs/php_codesniffer": "1.*",
+        "sunra/php-simple-html-dom-parser": "v1.5.0",
         "symfony/config": "v2.3.4",
         "symfony/console": "v2.3.4",
         "symfony/yaml": "v2.3.4",
         "twig/twig": "v1.13.2"
-    },
-    "autoload": {
-        "classmap": [
-            "vendor/simple-html-dom/simple-html-dom/"
-        ]
     },
     "bin": [
         "bin/md2resume"

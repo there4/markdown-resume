@@ -24,7 +24,7 @@ at the [blog post for the project][blog].
 
 ## Help
 ```
-Markdown Resume Generator version 2.0.6 by Craig Davis
+Markdown Resume Generator version 2.0.7 by Craig Davis
 
 Usage:
   [options] command [arguments]
@@ -100,6 +100,8 @@ are a more comfortable with html than markdown, you should use it.
 
 ## Changelog
 
+* __2.0.7__ : Update composer to use `sunra/php-simple-html-dom-parser` this
+  appears to be better maintained and more popular to close #27
 * __2.0.6__ : Fix empty template list from phar file to close #24
 * __2.0.5__ : Remove default value for the `--refresh` option to close #22
 * __2.0.4__ : Fix path resolution problem with absolute paths to close #16
