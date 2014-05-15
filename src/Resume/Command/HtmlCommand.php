@@ -119,6 +119,8 @@ class HtmlCommand extends Command
 
         $style = $this->generateContent($templatePath, 'css');
 
+        $links = $this->generateContent($templatePath, 'links');
+
         $templateContent = file_get_contents($templateIndexPath);
         $resumeContent   = file_get_contents($source);
 
@@ -139,6 +141,7 @@ class HtmlCommand extends Command
         $rendered = $m->render($templateContent, array(
             'title'        => $title,
             'style'        => $style,
+            'links'        => $links,
             'resume'       => $resumeHtml,
             'reload'       => (bool) $refresh,
             'refresh_rate' => $refresh
