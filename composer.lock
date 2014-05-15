@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "c7a457f7ccfb1a6ec431bf89e1d4933c",
+    "hash": "5f42fb6da16a9d26eb5a44694e6123a6",
     "packages": [
         {
             "name": "fabpot/php-cs-fixer",
