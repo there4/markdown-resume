@@ -1,0 +1,8 @@
+#footer {
+    display: none;
+}
+
+#footer + p {
+    width: 100%;
+    font-size: 11px;
+}
