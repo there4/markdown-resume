@@ -11,6 +11,7 @@ use Assetic\Asset\FileAsset;
 use Assetic\Filter;
 use Michelf\MarkdownExtra;
 use Michelf\SmartyPants;
+use Sunra\PhpSimple\HtmlDomParser;
 
 class HtmlCommand extends Command
 {
@@ -67,6 +68,39 @@ class HtmlCommand extends Command
         return true;
     }
 
+    protected function generateContent($templatePath, $contentType)
+    {
+        // We build these into a single string so that we can deploy this resume as a
+        // single file.
+        $assetPath = join(DIRECTORY_SEPARATOR, array($templatePath, $contentType));
+
+        if (!file_exists($assetPath)) {
+            return '';
+        }
+
+        $assets = array();
+
+        // Our PHAR deployment can't handle the GlobAsset typically used here
+        foreach (new \DirectoryIterator($assetPath) as $fileInfo) {
+            if ($fileInfo->isDot() || !$fileInfo->isFile()) {
+                continue;
+            }
+            array_push($assets, new FileAsset($fileInfo->getPathname()));
+        }
+
+        $collection = new AssetCollection(
+            $assets
+        );
+
+        switch ($contentType) {
+            case 'css':
+                $collection->ensureFilter(new Filter\LessphpFilter());
+                break;
+        }
+
+        return $collection->dump();
+    }
+
     protected function generateHtml($source, $template, $refresh)
     {
         // Check that the source file is sane
@@ -85,25 +119,9 @@ class HtmlCommand extends Command
             throw new \Exception("Unable to open template file: $templateIndexPath");
         }
 
-        // We build these into a single string so that we can deploy this resume as a
-        // single file.
-        $cssAssetPath = join(DIRECTORY_SEPARATOR, array($templatePath, '/css'));
-        $cssAssets = array();
+        $style = $this->generateContent($templatePath, 'css');
 
-        // Our PHAR deployment can't handle the GlobAsset typically used here
-        foreach (new \DirectoryIterator($cssAssetPath) as $fileInfo) {
-            if ($fileInfo->isDot() || !$fileInfo->isFile()) {
-                continue;
-            }
-            array_push($cssAssets, new FileAsset($fileInfo->getPathname()));
-        }
-
-        $css = new AssetCollection(
-            $cssAssets,
-            array(new Filter\LessphpFilter())
-        );
-
-        $style = $css->dump();
+        $links = $this->generateContent($templatePath, 'links');
 
         $templateContent = file_get_contents($templateIndexPath);
         $resumeContent   = file_get_contents($source);
@@ -113,8 +131,7 @@ class HtmlCommand extends Command
         $resumeHtml = SmartyPants::defaultTransform($resumeHtml);
 
         // Construct the title for the html document from the h1 and h2 tags
-        $simpleDom = new \simple_html_dom();
-        $simpleDom->load($resumeHtml);
+        $simpleDom = HtmlDomParser::str_get_html($resumeHtml);
         $title = sprintf(
             '%s | %s',
             $simpleDom->find('h1', 0)->innertext,
@@ -126,6 +143,7 @@ class HtmlCommand extends Command
         $rendered = $m->render($templateContent, array(
             'title'        => $title,
             'style'        => $style,
+            'links'        => $links,
             'resume'       => $resumeHtml,
             'reload'       => (bool) $refresh,
             'refresh_rate' => $refresh

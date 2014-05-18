@@ -6,6 +6,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Sunra\PhpSimple\HtmlDomParser;
 
 class PdfCommand extends HtmlCommand
 {
@@ -59,7 +60,7 @@ class PdfCommand extends HtmlCommand
 
         // The pdf needs some extra css rules, and so we'll add them here
         // to our html document
-        $simpleDom = new \simple_html_dom($rendered);
+        $simpleDom = HtmlDomParser::str_get_html($rendered);
         $body = $simpleDom->find('body', 0);
         $body->class = $body->class . ' pdf';
         $rendered = (string) $simpleDom;
