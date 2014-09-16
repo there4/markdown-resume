@@ -58,7 +58,7 @@ Choose a template with the -t option.
 If you want to edit your markdown resume in your editor while watching it
 update in your browser, run this command:
 
-    watch ./bin/md2resume html --refresh examples/source/sample.md examples/output/
+    watch ./bin/md2resume html --refresh yes --template modern examples/source/sample.md examples/output/
 
 This makes the build script run periodically, and html document will refresh
 every two seconds via a meta tag. Open the `./examples/ouput/sample.html` file
