@@ -1,14 +1,13 @@
-# Markdown Resume Generator
+# Markdown Resume Generator [![Build Status](https://travis-ci.org/there4/markdown-resume.png?branch=master)](https://travis-ci.org/there4/markdown-resume)
+> Convert markdown to HTML and PDF resumes
 
 Turn a simple Markdown document into an elegant resume with both a perfect
 pdf printable format, and a responsive css3 html5 file. You can view a sample
 at the [blog post for the project][blog].
 
-[![Build Status](https://travis-ci.org/there4/markdown-resume.png?branch=master)](https://travis-ci.org/there4/markdown-resume)
-
 ## Features
 
-* Three styles to choose from: modern, blockish, unstyled (Fork and add more!)
+* Multiple styles to choose from: `modern`, `blockish`, `unstyled`, `readable`, `swissen` _(Fork and add more!)_
 * PDF generation via [wkhtmltopdf][wkhtmltopdf]
 * Responsive design for multiple device viewport sizes
 * Simple Markdown formatting
@@ -17,10 +16,12 @@ at the [blog post for the project][blog].
 
 ## Quickstart
 
-  There is no installation or need to run composer. Just run the phar file:
+  There is no installation or need to run composer. Just download and [run the phar file](https://github.com/there4/markdown-resume/raw/master/bin/md2resume):
 
+```
     ./bin/md2resume html examples/source/sample.md examples/output/
     ./bin/md2resume pdf examples/source/sample.md examples/output/
+```
 
 ## Help
 ```
@@ -53,12 +54,12 @@ Available commands:
 
 Choose a template with the -t option.
 
-    ./bin/md2resume html --template blockish examples/source/sample.md examples/output/
+    `./bin/md2resume html --template blockish examples/source/sample.md examples/output/`
 
 If you want to edit your markdown resume in your editor while watching it
 update in your browser, run this command:
 
-    watch ./bin/md2resume html --refresh yes --template modern examples/source/sample.md examples/output/
+    `watch ./bin/md2resume html --refresh yes --template modern examples/source/sample.md examples/output/`
 
 This makes the build script run periodically, and html document will refresh
 every two seconds via a meta tag. Open the `./examples/ouput/sample.html` file
