@@ -30,6 +30,12 @@ class PdfCommand extends HtmlCommand
                 't',
                 InputOption::VALUE_REQUIRED,
                 'Which of the templates to use'
+            )
+            ->addOption(
+                'output',
+                'o',
+                InputOption::VALUE_REQUIRED,
+                'The optional override of default filename to output to'
             );
     }
 
@@ -37,11 +43,19 @@ class PdfCommand extends HtmlCommand
     {
         $this->app    = $this->getApplication();
         $source       = $input->getArgument('source');
+        $sourceName   = pathinfo($source, PATHINFO_FILENAME);
         $destination  = rtrim($input->getArgument('destination'), DIRECTORY_SEPARATOR);
         $template     = $input->getOption('template');
         $pdfSource    = join(DIRECTORY_SEPARATOR, array($destination, '.tmp_pdf_source.html'));
+        $optFilename  = $input->getOption('output');
+
         $destFilename = join(DIRECTORY_SEPARATOR, array($destination, pathinfo($source, PATHINFO_FILENAME) . '.pdf'));
 
+        if ($optFilename) {
+            $destFilename = $destination . DIRECTORY_SEPARATOR . $optFilename . '.pdf';
+        } else {
+            $destFilename = $destination . DIRECTORY_SEPARATOR . $sourceName . '.pdf';
+        }
         // Make sure we've got out converter available
         exec('wkhtmltopdf -V', $results, $returnVal);
         if ($returnVal) {
