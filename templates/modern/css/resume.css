@@ -82,7 +82,7 @@ h2 {
 }
 
 h3 {
-    margin: 0;
+    margin: 0px 20px;
     padding: 0 0 .5em;
     font-size: 150%;
     font-style: italic;
@@ -146,7 +146,7 @@ ol li:nth-child(1) {
 
 dl {
     display: inline-block;
-    width: 75%;
+    width: 78%;
     margin: 0;
     padding: 0;
     dt {
