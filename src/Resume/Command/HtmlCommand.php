@@ -35,7 +35,7 @@ class HtmlCommand extends Command
                 'template',
                 't',
                 InputOption::VALUE_REQUIRED,
-                'Which of the templates to use'
+                'Which of the templates to use. Use an absolute path for a custom template.'
             )
             ->addOption(
                 'refresh',
@@ -126,7 +126,13 @@ class HtmlCommand extends Command
         if (!$template) {
             $template = $this->app->defaultTemplate;
         }
-        $templatePath = join(DIRECTORY_SEPARATOR, array($this->app->templatePath, basename($template)));
+
+        if (strpos($template, DIRECTORY_SEPARATOR) !== false) {
+            $templatePath = realpath($template);
+        } else {
+            $templatePath = join(DIRECTORY_SEPARATOR, array($this->app->templatePath, basename($template)));
+        }
+
         $templateIndexPath = join(DIRECTORY_SEPARATOR, array($templatePath, 'index.html'));
 
         if (!file_exists($templateIndexPath)) {
