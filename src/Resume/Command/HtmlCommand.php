@@ -102,6 +102,10 @@ class HtmlCommand extends Command
             array_push($assets, new FileAsset($fileInfo->getPathname()));
         }
 
+        usort($assets, function(FileAsset $a, FileAsset $b){
+            return strcmp($a->getSourcePath(), $b->getSourcePath());
+        });
+
         $collection = new AssetCollection(
             $assets
         );
