@@ -102,7 +102,7 @@ class HtmlCommand extends Command
             array_push($assets, new FileAsset($fileInfo->getPathname()));
         }
 
-        usort($assets, function(FileAsset $a, FileAsset $b){
+        usort($assets, function (FileAsset $a, FileAsset $b) {
             return strcmp($a->getSourcePath(), $b->getSourcePath());
         });
 
@@ -179,7 +179,6 @@ class HtmlCommand extends Command
     protected function determineOutfile($outputFilename)
     {
         return join(DIRECTORY_SEPARATOR, array($destination, pathinfo($source, PATHINFO_FILENAME) . '.html'));
-
     }
 }
 
