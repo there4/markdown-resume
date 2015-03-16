@@ -91,11 +91,11 @@
     
     h3+p {
         float: left;
-        width: 84%;
+        width: 78%;
     }
     
     ul li {
-        width: 28%;
+        width: 25%;
         float: left;
     }
     ul dl {
@@ -111,7 +111,7 @@
 
     ol {
         float: left;
-        width: 84%;
+        width: 79%;
         margin: .6em 0 0;
     }
 
