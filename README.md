@@ -25,7 +25,7 @@ at the [blog post for the project][blog].
 
 ## Help
 ```
-Markdown Resume Generator version 2.0.8 by Craig Davis
+Markdown Resume Generator version 2.0.9 by Craig Davis
 
 Usage:
   [options] command [arguments]
@@ -101,6 +101,7 @@ are a more comfortable with html than markdown, you should use it.
 
 ## Changelog
 
+* __2.0.10__ : Updated spacing in moder template with commites from [@501st-alpha1](https://github.com/501st-alpha1)
 * __2.0.9__ : Updated Modern template with improved spacing. Update parsing of
   `--template` option to close [issue #7](https://github.com/there4/markdown-resume/issues/7)
 * __2.0.8__ : New `readable` theme contributed by @ahmadnazir, minor refactor
