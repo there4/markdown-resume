@@ -25,7 +25,7 @@ at the [blog post for the project][blog].
 
 ## Help
 ```
-Markdown Resume Generator version 2.0.8 by Craig Davis
+Markdown Resume Generator version 2.0.9 by Craig Davis
 
 Usage:
   [options] command [arguments]
