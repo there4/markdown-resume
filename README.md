@@ -25,7 +25,7 @@ at the [blog post for the project][blog].
 
 ## Help
 ```
-Markdown Resume Generator version 2.0.9 by Craig Davis
+Markdown Resume Generator version 2.0.10 by Craig Davis
 
 Usage:
   [options] command [arguments]
@@ -88,6 +88,15 @@ commands, you'll need to first install the dependencies:
 * `composer install`
 
 After that, you can run the `md2resume_dev.php` file from the command line.
+
+## Building a Release
+
+1. Tag the repo with the new build number. This will be picked up for both
+   the `version` file used by the self update command and placed into the
+   phar file.
+2. Run `pake build`.
+3. Push both the tag and the code.
+
 Check out the pake tooling for more information about the build. Pake will be
 installed to `./vendor/bin/pake`. So for instance a complete phar file build
 looks like `./vendor/bin/pake build`.

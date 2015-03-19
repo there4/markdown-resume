@@ -8,7 +8,7 @@
         "html5"
     ],
     "license": "MIT",
-    "version": "2.0.9",
+    "version": "2.0.10",
     "selfupdatepath": "://github.com/there4/markdown-resume/raw/master/bin/md2resume",
     "selfupdateversion": "://github.com/there4/markdown-resume/raw/master/version",
     "authors": [
