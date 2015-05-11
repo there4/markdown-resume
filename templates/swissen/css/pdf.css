@@ -37,12 +37,12 @@ body.pdf {
     }
     h3 {
         float: left;
-        width: 16%;
+        width: 20%;
         font-style: normal;
     }
     h3+p {
         float: left;
-        width: 84%;
+        width: 80%;
     }
 
     blockquote {
@@ -70,7 +70,7 @@ body.pdf {
 
     ol {
         float: left;
-        width: 84%;
+        width: 80%;
         margin: .7em 0 0;
     }
 
