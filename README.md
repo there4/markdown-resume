@@ -66,6 +66,9 @@ every two seconds via a meta tag. Open the `./examples/ouput/sample.html` file
 in your browser, and then just save your markdown document when you want to see
 a fresh preview.
 
+For information about running this inside a Docker container, please read [Issue 46](https://github.com/there4/markdown-resume/issues/46#issuecomment-126520792)
+where [Sebastian Klose](https://github.com/sklose) has shared his approach.
+
 ## Authoring Your Resume
 
 Markdown is limited to basic html markup. Follow the `examples/source/sample.md`
