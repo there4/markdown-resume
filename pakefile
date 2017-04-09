@@ -32,7 +32,10 @@ pake_task('build', 'version', 'version_file', 'readme', 'lint', 'fixer', 'sniff'
 
 pake_alias('default', 'build');
 
-function run_build() {}
+function run_build()
+{
+    // Used only for naming a string of dependencies.
+}
 
 function run_test()
 {
@@ -112,7 +115,7 @@ function run_readme()
 
 function run_mv()
 {
-  pake_sh('cp ./bin/md2resume ~/bin/md2resume', true);
+    pake_sh('cp ./bin/md2resume ~/bin/md2resume', true);
 }
 
 /* End of pakefile */

@@ -44,7 +44,7 @@ body.pdf {
     }
     h3+p {
         float: left;
-        width: 84%;
+        width: 78%;
     }
 
     blockquote {
@@ -54,7 +54,7 @@ body.pdf {
     }
 
     ul li {
-        width: 28%;
+        width: 33%;
         float: left;
     }
     ul dl {
@@ -66,13 +66,13 @@ body.pdf {
             margin: 0 0 .75em;
         }
         dd {
-            padding: 0 4em 0 0;
+            padding: 0 2em 0 0;
         }
     }
 
     ol {
         float: left;
-        width: 84%;
+        width: 79%;
         margin: .7em 0 0;
     }
 
@@ -91,7 +91,7 @@ body.pdf {
         margin: .7em 0 0;
         page-break-inside: avoid !important;
         display: block;
-        width:84%;
+        width:79%;
         float: left;
         dt {}
         dd {

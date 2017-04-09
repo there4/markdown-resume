@@ -35,7 +35,7 @@ class HtmlCommand extends Command
                 'template',
                 't',
                 InputOption::VALUE_REQUIRED,
-                'Which of the templates to use'
+                'Which of the templates to use. Use an absolute path for a custom template.'
             )
             ->addOption(
                 'refresh',
@@ -43,6 +43,12 @@ class HtmlCommand extends Command
                 InputOption::VALUE_REQUIRED,
                 'Regenerate the html and include a meta command to refresh the ' .
                 'document every periodically. Measured in seconds.'
+            )
+            ->addOption(
+                'output',
+                'o',
+                InputOption::VALUE_REQUIRED,
+                'The optional override of default filename to output to'
             );
     }
 
@@ -50,10 +56,18 @@ class HtmlCommand extends Command
     {
         $this->app    = $this->getApplication();
         $source       = $input->getArgument('source');
+        $sourceName   = pathinfo($source, PATHINFO_FILENAME);
         $destination  = rtrim($input->getArgument('destination'), DIRECTORY_SEPARATOR);
         $template     = $input->getOption('template');
         $refresh      = $input->getOption('refresh');
-        $destFilename = join(DIRECTORY_SEPARATOR, array($destination, pathinfo($source, PATHINFO_FILENAME) . '.html'));
+        $optFilename  = $input->getOption('output');
+        $destFilename = "";
+
+        if ($optFilename) {
+            $destFilename = $destination . DIRECTORY_SEPARATOR . $optFilename . '.html';
+        } else {
+            $destFilename = $destination . DIRECTORY_SEPARATOR . $sourceName . '.html';
+        }
 
         $rendered = $this->generateHtml($source, $template, $refresh);
         file_put_contents($destFilename, $rendered);
@@ -88,6 +102,10 @@ class HtmlCommand extends Command
             array_push($assets, new FileAsset($fileInfo->getPathname()));
         }
 
+        usort($assets, function (FileAsset $a, FileAsset $b) {
+            return strcmp($a->getSourcePath(), $b->getSourcePath());
+        });
+
         $collection = new AssetCollection(
             $assets
         );
@@ -112,7 +130,13 @@ class HtmlCommand extends Command
         if (!$template) {
             $template = $this->app->defaultTemplate;
         }
-        $templatePath = join(DIRECTORY_SEPARATOR, array($this->app->templatePath, basename($template)));
+
+        if (strpos($template, DIRECTORY_SEPARATOR) !== false) {
+            $templatePath = realpath($template);
+        } else {
+            $templatePath = join(DIRECTORY_SEPARATOR, array($this->app->templatePath, basename($template)));
+        }
+
         $templateIndexPath = join(DIRECTORY_SEPARATOR, array($templatePath, 'index.html'));
 
         if (!file_exists($templateIndexPath)) {
@@ -150,6 +174,11 @@ class HtmlCommand extends Command
         ));
 
         return $rendered;
+    }
+
+    protected function determineOutfile($outputFilename)
+    {
+        return join(DIRECTORY_SEPARATOR, array($destination, pathinfo($source, PATHINFO_FILENAME) . '.html'));
     }
 }
 
