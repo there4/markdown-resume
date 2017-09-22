@@ -14,6 +14,17 @@ at the [blog post for the project][blog].
 * Single file deployment (no external stylesheets)
 * You can now version control and branch your resume.
 
+## Install
+#### Debian
+```bash
+sudo apt install php7.0-mbstring wkhtmltopdf
+```
+
+#### Fedora
+```bash
+sudo dnf install php-mbstring wkhtmltopdf
+```
+
 ## Quickstart
 
   There is no installation or need to run composer. Just download and [run the phar file](https://github.com/there4/markdown-resume/raw/master/bin/md2resume):
