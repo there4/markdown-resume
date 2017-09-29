@@ -46,7 +46,7 @@
         "kriswallsmith/assetic": "1.1.2",
         "leafo/lessphp": "v0.4.0",
         "michelf/php-markdown": "1.4.0",
-        "michelf/php-smartypants": "1.6.0-beta1",
+        "michelf/php-smartypants": "^1.8",
         "mustache/mustache": "2.5.1",
         "phpunit/phpunit": "3.7.*",
         "squizlabs/php_codesniffer": "1.*",
@@ -54,7 +54,9 @@
         "symfony/config": "v2.3.4",
         "symfony/console": "v2.3.4",
         "symfony/yaml": "v2.3.4",
-        "twig/twig": "v1.13.2"
+        "twig/twig": "v1.13.2",
+        "symfony/event-dispatcher": "^4.0@dev",
+        "leafo/scssphp": "dev-master"
     },
     "bin": [
         "bin/md2resume"
