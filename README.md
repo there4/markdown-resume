@@ -124,7 +124,7 @@ are a more comfortable with html than markdown, you should use it.
 
 ## Changelog
 
-* __2.0.11__ : Added new `Roboto` template from [@ejwaibel](https://github.com/ejwaibel)
+* __2.0.12__ : Added new `Roboto` template from [@ejwaibel](https://github.com/ejwaibel)
 * __2.0.10__ : Updated spacing in moder template with commites from [@501st-alpha1](https://github.com/501st-alpha1)
 * __2.0.9__ : Updated Modern template with improved spacing. Update parsing of
   `--template` option to close [issue #7](https://github.com/there4/markdown-resume/issues/7)
