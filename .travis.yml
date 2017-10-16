@@ -1,9 +1,14 @@
 language: php
 
-before_script:
-  - curl -s http://getcomposer.org/installer | php
-  - php composer.phar install --dev
-
 php:
-  - 5.3
-  - 5.4
+  - '5.6'
+  - '7.0'
+  - '7.1'
+  - '7.2'
+
+install:
+  - travis_retry composer self-update
+  - travis_retry composer install --prefer-source --no-interaction --dev
+
+script:
+  - ./vendor/bin/pake test

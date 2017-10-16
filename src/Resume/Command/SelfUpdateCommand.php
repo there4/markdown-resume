@@ -13,7 +13,7 @@ class SelfUpdateCommand extends Command
             ->setName('selfupdate')
             ->setDescription('Updates md2resume.phar to the latest version.')
             ->setHelp(
-<<<EOT
+                <<<EOT
 The <info>self-update</info> command checks github for newer
 versions of the command line client and if found, installs the latest.
 

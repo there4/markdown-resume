@@ -6,7 +6,7 @@ pake_task('test');
 pake_desc('Check the code for psr2 standards');
 pake_task('sniff');
 
-pake_desc('Run php-cs-fixer on the src directory');
+pake_desc('Run phpcbf on the src directory');
 pake_task('fixer');
 
 pake_desc('Update the README with the latest command output');
@@ -88,11 +88,11 @@ function run_sniff()
 
 function run_fixer()
 {
-    pake_echo_comment('Running php-cs-fixer');
+    pake_echo_comment('Running phpcbf');
     pake_sh(
-        './vendor/bin/php-cs-fixer fix ./md2resume_dev.php'
-        . ' && ./vendor/bin/php-cs-fixer fix ./src/Resume/Cli/'
-        . ' && ./vendor/bin/php-cs-fixer fix ./src/Resume/Command/',
+        './vendor/bin/phpcbf --standard=PSR2 ./md2resume_dev.php'
+        . ' && ./vendor/bin/phpcbf --standard=PSR2 ./src/Resume/Cli/'
+        . ' && ./vendor/bin/phpcbf --standard=PSR2 ./src/Resume/Command/',
         true
     );
 }

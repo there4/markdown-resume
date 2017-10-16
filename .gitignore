@@ -1,3 +1,4 @@
+.idea
 vendor
 examples/resume/_*.md
 examples/output/*.html

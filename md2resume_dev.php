@@ -7,7 +7,7 @@ if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
 }
 
 // Bootstrap our application with the Composer autoloader
-$app = require __DIR__ . '/vendor/autoload.php';
+$app = include __DIR__ . '/vendor/autoload.php';
 
 // Setup the namespace for our own namespace
 $app->add('Resume', __DIR__ . '/src');

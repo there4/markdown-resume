@@ -3,9 +3,10 @@
 $app = require __DIR__ . '/../vendor/autoload.php';
 $app->add('Resume', __DIR__ . '/../src');
 
+use PHPUnit\Framework\TestCase;
 use Resume\Cli\Resume;
 
-class ResumeTest extends \PHPUnit_Framework_TestCase
+class ResumeTest extends TestCase
 {
     public $console;
 
