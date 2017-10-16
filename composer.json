@@ -14,7 +14,7 @@
     "authors": [
         {
             "name": "Craig Davis",
-            "email": "craig@there4development.com",
+            "email": "craig@there4.io",
             "role": "Developer"
         },
         {
@@ -34,6 +34,11 @@
             "name": "Abhishek Kandoi",
             "email": "abhikandoi2000@gmail.com",
             "role": "Contributor"
+        },
+        {
+          "name": "Erik Waibel",
+          "email": "ejwaibel@gmail.com",
+          "role": "Contributor"
         }
     ],
     "support": {
@@ -41,7 +46,7 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.1",
         "indeyets/pake": "~1.99",
         "kriswallsmith/assetic": "1.1.2",
         "leafo/lessphp": "v0.4.0",

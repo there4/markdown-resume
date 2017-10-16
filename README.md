@@ -124,6 +124,7 @@ are a more comfortable with html than markdown, you should use it.
 
 ## Changelog
 
+* __2.1.0__ : Dropped PHP5 support
 * __2.0.12__ : Added new `Roboto` template from [@ejwaibel](https://github.com/ejwaibel)
 * __2.0.10__ : Updated spacing in moder template with commites from [@501st-alpha1](https://github.com/501st-alpha1)
 * __2.0.9__ : Updated Modern template with improved spacing. Update parsing of
