@@ -41,6 +41,7 @@
     },
     "minimum-stability": "dev",
     "require": {
+        "php": ">=7.0",
         "indeyets/pake": "~1.99",
         "kriswallsmith/assetic": "1.1.2",
         "leafo/lessphp": "v0.4.0",
