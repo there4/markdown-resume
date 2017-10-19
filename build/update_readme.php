@@ -8,7 +8,7 @@ $baseDir    = dirname(__DIR__);
 $startPoint = '## Help';
 $endPoint   = '## Examples';
 $readme     = file_get_contents('README.md');
-$help       = shell_exec('php '.$baseDir.'/md2resume_dev.php list --no-interaction');
+$help       = shell_exec('php '.$baseDir.'/bin/md2resume list --no-interaction');
 $output     = preg_replace(
     '/('.preg_quote($startPoint).')(.*)('.preg_quote($endPoint).')/si',
     "$1\n```\n" . $help . "\n```\n$3",
