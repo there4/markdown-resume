@@ -9,8 +9,6 @@
     ],
     "license": "MIT",
     "version": "2.0.10",
-    "selfupdatepath": "://github.com/there4/markdown-resume/raw/master/bin/md2resume",
-    "selfupdateversion": "://github.com/there4/markdown-resume/raw/master/version",
     "authors": [
         {
             "name": "Craig Davis",
@@ -47,7 +45,6 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=7.1",
-        "indeyets/pake": "~1.99",
         "kriswallsmith/assetic": "1.1.2",
         "leafo/lessphp": "v0.4.0",
         "michelf/php-markdown": "1.4.0",
@@ -66,6 +63,22 @@
     ],
     "require-dev": {
         "phpunit/phpunit": "^6.2",
-        "squizlabs/php_codesniffer": "^3.0@dev"
+        "squizlabs/php_codesniffer": "^3.0@dev",
+        "jakub-onderka/php-parallel-lint": "dev-master",
+        "jakub-onderka/php-console-highlighter": "dev-master"
+    },
+    "scripts": {
+        "build": [
+            "@lint",
+            "@format",
+            "@sniff",
+            "@test",
+            "@readme"
+        ],
+        "lint": "vendor/bin/parallel-lint --exclude app --exclude vendor .",
+        "sniff": "vendor/bin/phpcs --standard=PSR2 -n --extensions=php src",
+        "format": "vendor/bin/phpcbf --standard=PSR2 --extensions=php src",
+        "readme": "build/update_readme.php",
+        "test": "vendor/bin/phpunit"
     }
 }
