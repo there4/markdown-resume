@@ -42,7 +42,7 @@ sudo dnf install php-mbstring wkhtmltopdf
 
 ## Help
 ```
-Markdown Resume Generator version 2.1.0 by Craig Davis
+Markdown Resume Generator version 2.2.0 by Craig Davis
 
 Usage:
   [options] command [arguments]
