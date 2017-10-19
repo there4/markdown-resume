@@ -20,10 +20,14 @@ $app->add('Resume', $baseDir . '/src');
 // Instantiate our Console application
 $console = new Resume\Cli\Resume();
 
-// If we're running from phar, we get these values from the stub
-if (!defined('IN_PHAR')) {
-    $project = json_decode(file_get_contents($baseDir . '/composer.json'));
-}
+// Fetch the version
+chdir($baseDir);
+$versionCmd = 'git describe --abbrev=0 --tags';
+$version    = trim(shell_exec($versionCmd));
+
+// Fetch the project name and description
+$project = json_decode(file_get_contents(__DIR__ . '/../composer.json'));
+$project->version = $version;
 
 // Init the app with these params
 $console->initialize($templatePath, $consoleTemplatePath, $project);

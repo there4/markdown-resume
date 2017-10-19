@@ -18,8 +18,6 @@ class Resume extends Application
 
     public function initialize($templatePath, $consoleTemplatePath, $project)
     {
-        $runSetup = false;
-
         // Add the composer information for use in version info and such.
         $this->project = $project;
 
