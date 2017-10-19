@@ -83,7 +83,7 @@ class PdfCommand extends HtmlCommand
         file_put_contents($pdfSource, $rendered);
 
         // Process the document with wkhtmltopdf
-        exec('wkhtmltopdf ' . $pdfSource .' ' . $destFilename);
+        exec('wkhtmltopdf  --dpi 300' . $pdfSource .' ' . $destFilename);
 
         // Unlink the temporary file
         unlink($pdfSource);
