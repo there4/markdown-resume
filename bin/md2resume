@@ -7,8 +7,9 @@ $templatePath = $baseDir . '/templates';
 $consoleTemplatePath = $baseDir . '/src/Resume/Templates';
 
 // If the dependencies aren't installed, we have to bail and offer some help.
-if (!file_exists($baseDir . '/vendor/autoload.php')) {
-    exit("\nPlease run `composer install` to install dependencies.\n\n");
+$autoloadPath = $baseDir . '/vendor/autoload.php';
+if (!file_exists($autoloadPath)) {
+    exit("\nThe dependency '$autoloadPath' was not found. Please run `composer install` to install dependencies.\n\n");
 }
 
 // Bootstrap our application with the Composer autoloader
