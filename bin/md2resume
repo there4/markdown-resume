@@ -3,6 +3,7 @@
 error_reporting(E_ALL | E_STRICT);
 
 $baseDir = dirname(__DIR__);
+$cwd = getcwd();
 $templatePath = $baseDir . '/templates';
 $consoleTemplatePath = $baseDir . '/src/Resume/Templates';
 
@@ -31,6 +32,7 @@ $console = new Resume\Cli\Resume();
 chdir($baseDir);
 $versionCmd = 'git describe --abbrev=0 --tags';
 $version    = trim(shell_exec($versionCmd));
+chdir($cwd);
 
 // Fetch the project name and description
 $project = json_decode(file_get_contents(__DIR__ . '/../composer.json'));
