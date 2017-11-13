@@ -30,7 +30,7 @@ $console = new Resume\Cli\Resume();
 
 // Fetch the version
 chdir($baseDir);
-$versionCmd = 'git describe --abbrev=0 --tags';
+$versionCmd = 'git describe --abbrev=0 --tags 2>/dev/null';
 $version    = trim(shell_exec($versionCmd));
 chdir($cwd);
 
