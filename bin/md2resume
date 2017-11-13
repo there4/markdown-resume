@@ -6,14 +6,20 @@ $baseDir = dirname(__DIR__);
 $templatePath = $baseDir . '/templates';
 $consoleTemplatePath = $baseDir . '/src/Resume/Templates';
 
+// When md2resume is installed with composer, it resides in the a
+// 'markdown-resume' subdirectory of the 'vendor' directory, so we need to
+// walk up a few folders to find 'autoload.php'.
+$autoloadPath = basename($baseDir) === 'markdown-resume'
+              ? realpath($baseDir . '/../../autoload.php')
+              : $baseDir . '/vendor/autoload.php';
+
 // If the dependencies aren't installed, we have to bail and offer some help.
-$autoloadPath = $baseDir . '/vendor/autoload.php';
 if (!file_exists($autoloadPath)) {
     exit("\nThe dependency '$autoloadPath' was not found. Please run `composer install` to install dependencies.\n\n");
 }
 
 // Bootstrap our application with the Composer autoloader
-$app = include $baseDir . '/vendor/autoload.php';
+$app = include $autoloadPath;
 
 // Setup the namespace for our own namespace
 $app->add('Resume', $baseDir . '/src');
