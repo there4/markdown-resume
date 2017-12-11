@@ -3,7 +3,7 @@
 
 Turn a simple Markdown document into an elegant resume with both a perfect
 pdf printable format, and a responsive css3 html5 file. You can view a sample
-at the [blog post for the project][blog].
+at the [blog post for the project][blog], or look in examples/output to see sample PDFs.
 
 ## Features
 
