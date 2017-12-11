@@ -3,7 +3,7 @@
 
 Turn a simple Markdown document into an elegant resume with both a perfect
 pdf printable format, and a responsive css3 html5 file. You can view a sample
-at the [blog post for the project][blog].
+at the [blog post for the project][blog], or look in examples/output to see sample PDFs.
 
 ## Features
 
@@ -17,11 +17,14 @@ at the [blog post for the project][blog].
 ## Install
 
 #### OSX
-
-The simplest installation of the requirements is via [Homebrew Cask](https://caskroom.github.io/)
+1. The simplest installation of the PDF to HTML conversion tool is via [Homebrew Cask](https://caskroom.github.io/)
 ```bash
 brew cask install wkhtmltopdf
 ```
+2. Download as .zip (cloning has [an issue as of Dec 2017](https://github.com/there4/markdown-resume/issues/65)) and unzip.
+3. [Install PHP 7](https://jason.pureconcepts.net/2016/09/upgrade-php-mac-os-x/) and be sure to update your PATH variable.
+4. [Install 'composer'](https://getcomposer.org/download/), a per-project package installer to setup the rest of the requirements. You may need to run './composer.phar update' to get the correct versions of dependencies.
+5. Now you should be ready to continue down in Quickstart.
 
 #### Debian
 ```bash
