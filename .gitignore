@@ -1,4 +1,3 @@
-.idea
 vendor
 examples/resume/_*.md
 examples/output/*.html
@@ -17,4 +16,3 @@ Icon
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
-*.sublime*
