@@ -1,0 +1,150 @@
+#!/usr/bin/php
+<?php
+// ===========
+// = Globals =
+// ===========
+$count   = 0; // total files checked
+$errors  = array();
+$options = setOptions(array(
+	'quiet'   => false,
+	'recurse' => false,
+));
+
+
+if ($options['quiet']) {
+	ob_start();
+}
+
+// =============
+// = Scan path =
+// =============
+$files = getPipedFiles();
+
+$path = $_SERVER['PWD']; // Default to execution directory
+
+
+// Piped files present
+if ($files) { 
+	foreach ($files as $file) {
+		checkFile("$path/$file");
+	}
+}
+// Use arguments
+else {
+	if ($_SERVER['argc'] > 1) {
+		$last = end($_SERVER['argv']);
+		if (substr($last, 0, 1) != '-') {
+			$path = $last; // snag last argument, if it wasn't an option switch
+		}
+	}
+	
+	if (is_dir($path)) {
+		checkDirectoryContents($path);
+	}
+	elseif (is_file($path)) {
+		checkFile($path);
+	}
+	else {
+		echo "$path is not a file or directory.\n";
+		showHelp() AND exit(1);
+	}
+}
+
+if ($options['quiet']) {
+	ob_end_clean();
+}
+
+echo "\n$count files checked, " . count($errors) . ' errors.';
+echo "\n", implode($errors,'');
+
+function checkDirectoryContents($dir) {
+	global $options, $i, $errors, $count;
+	
+	$contents = scandir($dir);
+	foreach($contents as $content) {
+		if ($content == '.' || $content == '..') {
+			continue;
+		}
+		
+		$path = "$dir/$content";
+		
+		// Recurse into directories
+		if (is_dir($path) && $options['recurse']) {
+			checkDirectoryContents($path);
+		} // if is_dir
+		else {
+			checkFile($path);
+		} // !is_dir
+	} // foreach
+} // function checkDirectoryContents
+
+function checkFile($path) {
+	global $count, $errors;
+	// echo "$path\n";
+	
+	// Skip non-php files
+	if (substr($path, -4) != '.php') {
+		return false;
+	}
+	
+	if (($count % 60 == 0)) {
+		echo "\n";
+	}
+
+	$error = `php -l $path 2>&1 1> /dev/null`;
+	if ($error) {
+		$errors[] = $error;
+		echo 'E';
+	}
+	else {
+		echo '.';
+	}
+	
+	$count++;
+}
+
+
+function getPipedFiles() {
+	$files = array();
+	stream_set_blocking(STDIN,FALSE);
+	while ($line = trim(fgets(STDIN))) {
+		$files[] = $line;
+	}
+	return $files;
+}
+
+function setOptions($options) {
+	$args = array_keys(getopt('qRh', array('quiet', 'recursive', 'help')));
+	foreach ($args as $arg) {
+		switch ($arg) {
+			case 'q':
+			case 'quiet':
+				$options['quiet'] = true;
+				break;
+
+			case 'R':
+			case 'recursive':
+				$options['recurse'] = true;
+				break;
+
+			case 'h':
+			case 'help':
+			default:
+				showHelp() AND exit(0);
+		} // Switch
+	} // Foreach args
+	return $options;
+} // function setOptions
+
+function showHelp() {
+	echo <<<HELP
+usage: lint [-qR] [path]
+
+options: 
+	-q, --quiet:     disable verbose output
+	-R, --recursive: recurse into subdirectories
+	-h, --help:      display this help screen
+
+HELP;
+	return true;
+}

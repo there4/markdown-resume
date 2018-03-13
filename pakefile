@@ -1,0 +1,121 @@
+<?php
+
+pake_desc('Run the unit tests');
+pake_task('test');
+
+pake_desc('Check the code for psr2 standards');
+pake_task('sniff');
+
+pake_desc('Run php-cs-fixer on the src directory');
+pake_task('fixer');
+
+pake_desc('Update the README with the latest command output');
+pake_task('readme');
+
+pake_desc('Build phar file');
+pake_task('phar');
+
+pake_desc('PHP Lint the src folder');
+pake_task('lint');
+
+pake_desc('Display the version');
+pake_task('version');
+
+pake_desc('Create the selfupdate version file');
+pake_task('version_file');
+
+pake_desc('Copy to ~/bin');
+pake_task('mv');
+
+pake_desc('Build the app for deployment');
+pake_task('build', 'version', 'version_file', 'readme', 'lint', 'fixer', 'sniff', 'phar');
+
+pake_alias('default', 'build');
+
+function run_build()
+{
+    // Used only for naming a string of dependencies.
+}
+
+function run_test()
+{
+    pake_sh('./vendor/bin/phpunit', true);
+}
+
+function run_version()
+{
+    $composer = json_decode(file_get_contents('composer.json'));
+    pake_echo_comment("Building Markdown Resume Builder version " . $composer->version);
+}
+
+function run_version_file()
+{
+    // Find the latest tag
+    $version = trim(shell_exec('git describe --abbrev=0 --tags'));
+    // Write it to the version file for the self update command
+    file_put_contents('./version', $version);
+    // Write it to the composer.json file as well
+    $config = json_decode(file_get_contents('composer.json'));
+    $config->version = $version;
+    file_put_contents('composer.json', json_encode($config, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+}
+
+function run_lint()
+{
+    pake_echo_comment('Linting files');
+    pake_sh('./build/lint -R ./src', true);
+}
+
+function run_phar()
+{
+    pake_echo_comment('Construction phar and moving to ./bin/md2resume');
+    $command =
+        'rm -f ./bin/md2resume && rm -f ./bin/md2resume.phar &&'
+        . 'php -dphar.readonly=0 build/empir make ./bin/md2resume.phar md2resume_dev.php . --exclude="'
+        . '*.git/*|*.gitignore|*test*|*Tests*|*.md|*/doc/*|*.lock|*token.txt|pakefile'
+        . '|.*|build/*|*.markdown|*.phar|*LICENSE|*AUTHORS|*CHANGELOG|*.dist|*.tpl|.travis.yml'
+        . '|*squizlabs*|*fabpot*'
+        . '" && chmod a+x ./bin/md2resume.phar'
+        . ' && mv ./bin/md2resume.phar ./bin/md2resume';
+    pake_sh($command, true);
+}
+
+function run_sniff()
+{
+    pake_echo_comment('Checking files for PSR2');
+    pake_sh('./vendor/bin/phpcs -p --standard=PSR2 ./src/ ./md2resume_dev.php', true);
+}
+
+function run_fixer()
+{
+    pake_echo_comment('Running php-cs-fixer');
+    pake_sh(
+        './vendor/bin/php-cs-fixer fix ./md2resume_dev.php'
+        . ' && ./vendor/bin/php-cs-fixer fix ./src/Resume/Cli/'
+        . ' && ./vendor/bin/php-cs-fixer fix ./src/Resume/Command/',
+        true
+    );
+}
+
+function run_readme()
+{
+    pake_echo_comment('Updating README documentation');
+
+    $startPoint = '## Help';
+    $endPoint   = '## Examples';
+    $readme     = file_get_contents('README.md');
+    $help       = shell_exec('php ./md2resume_dev.php list --no-interaction');
+    $output     = preg_replace(
+        '/('.preg_quote($startPoint).')(.*)('.preg_quote($endPoint).')/si',
+        "$1\n```\n" . $help . "\n```\n$3",
+        $readme
+    );
+    file_put_contents('README.md', $output);
+}
+
+function run_mv()
+{
+    pake_sh('cp ./bin/md2resume ~/bin/md2resume', true);
+}
+
+/* End of pakefile */
