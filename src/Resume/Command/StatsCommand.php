@@ -67,7 +67,7 @@ class StatsCommand extends Command
                     $phrase .= strtolower($input[$key+$i]);
                 }
             }
-            if (!isset( $results[$phrase])) {
+            if (!isset($results[$phrase])) {
                 $results[$phrase] = 1;
             } else {
                 $results[$phrase]++;

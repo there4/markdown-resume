@@ -3,7 +3,7 @@
 
 Turn a simple Markdown document into an elegant resume with both a perfect
 pdf printable format, and a responsive css3 html5 file. You can view a sample
-at the [blog post for the project][blog].
+at the [blog post for the project][blog], or look in examples/output to see sample PDFs.
 
 ## Features
 
@@ -14,9 +14,29 @@ at the [blog post for the project][blog].
 * Single file deployment (no external stylesheets)
 * You can now version control and branch your resume.
 
-## Quickstart
+## Install
 
-  There is no installation or need to run composer. Just download and [run the phar file](https://github.com/there4/markdown-resume/raw/master/bin/md2resume):
+#### OSX
+1. The simplest installation of the PDF to HTML conversion tool is via [Homebrew Cask](https://caskroom.github.io/)
+```bash
+brew cask install wkhtmltopdf
+```
+2. Download as .zip (cloning has [an issue as of Dec 2017](https://github.com/there4/markdown-resume/issues/65)) and unzip.
+3. [Install PHP 7](https://jason.pureconcepts.net/2016/09/upgrade-php-mac-os-x/) and be sure to update your PATH variable.
+4. [Install 'composer'](https://getcomposer.org/download/), a per-project package installer to setup the rest of the requirements. You may need to run './composer.phar update' to get the correct versions of dependencies.
+5. Now you should be ready to continue down in Quickstart.
+
+#### Debian
+```bash
+sudo apt install php7.0-mbstring wkhtmltopdf
+```
+
+#### Fedora
+```bash
+sudo dnf install php-mbstring wkhtmltopdf
+```
+
+## Quickstart
 
 ```
     ./bin/md2resume html examples/source/sample.md examples/output/
@@ -25,7 +45,7 @@ at the [blog post for the project][blog].
 
 ## Help
 ```
-Markdown Resume Generator version 2.0.10 by Craig Davis
+Markdown Resume Generator version 2.2.1 by Craig Davis
 
 Usage:
   [options] command [arguments]
@@ -40,14 +60,13 @@ Options:
   --no-interaction -n Do not ask any interactive question.
 
 Available commands:
-  help         Displays help for a command
-  html         Generate an HTML resume from a markdown file
-  list         Lists commands
-  pdf          Generate a PDF from a markdown file
-  selfupdate   Updates md2resume.phar to the latest version.
-  stats        Generate a word frequency analysis of your resume
-  templates    List available templates
-  version      Show current version information
+  help        Displays help for a command
+  html        Generate an HTML resume from a markdown file
+  list        Lists commands
+  pdf         Generate a PDF from a markdown file
+  stats       Generate a word frequency analysis of your resume
+  templates   List available templates
+  version     Show current version information
 
 ```
 ## Examples
@@ -78,15 +97,8 @@ and then use CSS rules to display a nicely formatted resume. Note that because
 we have very few ways to nest or identify elements that many of the css rules
 are based on descendant and adjacent selectors.
 
-__PLEASE NOTE__: The templates are compiled into the phar archive in the `./bin`
-folder. If you intend to edit the templates or add new ones, you'll need to run
-this application in the dev mode. See below for more information about doing
-this.
-
 ## Feature Development
-
-The application is deployed as a compiled phar file. In order to add new
-commands, you'll need to first install the dependencies:
+In order to add new commands, you'll need to first install the dependencies:
 
 * `composer install`
 
@@ -94,15 +106,9 @@ After that, you can run the `md2resume_dev.php` file from the command line.
 
 ## Building a Release
 
-1. Tag the repo with the new build number. This will be picked up for both
-   the `version` file used by the self update command and placed into the
-   phar file.
-2. Run `pake build`.
+1. Tag the repo with the new build number. 
+2. Run `composer build`.
 3. Push both the tag and the code.
-
-Check out the pake tooling for more information about the build. Pake will be
-installed to `./vendor/bin/pake`. So for instance a complete phar file build
-looks like `./vendor/bin/pake build`.
 
 ## Acknowledgments
 
@@ -113,6 +119,9 @@ are a more comfortable with html than markdown, you should use it.
 
 ## Changelog
 
+* __2.2.0__ : Dropped phar file distribution, removed Pake and migrated to composer commands
+* __2.1.0__ : Dropped PHP5 support
+* __2.0.12__ : Added new `Roboto` template from [@ejwaibel](https://github.com/ejwaibel)
 * __2.0.10__ : Updated spacing in moder template with commites from [@501st-alpha1](https://github.com/501st-alpha1)
 * __2.0.9__ : Updated Modern template with improved spacing. Update parsing of
   `--template` option to close [issue #7](https://github.com/there4/markdown-resume/issues/7)
@@ -144,3 +153,4 @@ are a more comfortable with html than markdown, you should use it.
 [pake]: https://github.com/indeyets/pake/wiki/Installing-Pake
 [wkhtmltopdf]: https://github.com/pdfkit/pdfkit/wiki/Installing-WKHTMLTOPDF
 [console]: http://symfony.com/doc/current/components/console/introduction.html
+HELLO
