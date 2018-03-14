@@ -1,4 +1,5 @@
 # Markdown Resume Generator [![Build Status](https://travis-ci.org/there4/markdown-resume.png?branch=master)](https://travis-ci.org/there4/markdown-resume)
+[![nodesource/node](http://dockeri.co/image/there4/markdown-resume)](https://registry.hub.docker.com/u/there4/markdown-resume/)
 > Convert markdown to HTML and PDF resumes
 
 Turn a simple Markdown document into an elegant resume with both a perfect
