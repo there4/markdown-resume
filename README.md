@@ -1,5 +1,5 @@
-# Markdown Resume Generator [![Build Status](https://travis-ci.org/there4/markdown-resume.png?branch=master)](https://travis-ci.org/there4/markdown-resume)
-[![nodesource/node](http://dockeri.co/image/there4/markdown-resume)](https://registry.hub.docker.com/u/there4/markdown-resume/)
+# Markdown Resume Generator [![Build Status](https://travis-ci.org/there4/markdown-resume.png?branch=master)](https://travis-ci.org/there4/markdown-resume)[![nodesource/node](http://dockeri.co/image/there4/markdown-resume)](https://registry.hub.docker.com/u/there4/markdown-resume/)
+
 > Convert markdown to HTML and PDF resumes
 
 Turn a simple Markdown document into an elegant resume with both a perfect
@@ -78,13 +78,15 @@ Available commands:
 ## Examples
 
 Choose a template with the -t option.
-```
+
+```bash
 ./bin/md2resume html --template blockish examples/source/sample.md examples/output/`
 ```
 
 If you want to edit your markdown resume in your editor while watching it
 update in your browser, run this command:
-```
+
+```bash
 watch ./bin/md2resume html --refresh yes --template modern examples/source/sample.md examples/output/
 ```
 
@@ -104,9 +106,7 @@ are based on descendant and adjacent selectors.
 
 ## Feature Development
 
-In order to add new commands, you'll need to first install the dependencies:
-
-* `composer install`
+In order to add new commands, you'll need to first install the dependencies via `composer install`
 
 After that, you can run the `md2resume_dev.php` file from the command line.
 
@@ -160,4 +160,3 @@ are a more comfortable with html than markdown, you should use it.
 [pake]: https://github.com/indeyets/pake/wiki/Installing-Pake
 [wkhtmltopdf]: https://github.com/pdfkit/pdfkit/wiki/Installing-WKHTMLTOPDF
 [console]: http://symfony.com/doc/current/components/console/introduction.html
-HELLO
