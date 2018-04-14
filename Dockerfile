@@ -20,7 +20,7 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/*
 
 # Wrap pdf creation in a xvfb-run to enable headless pdf creation in the container
-RUN printf '#!/bin/bash\nexec xvfb-run md2resume pdf "$@"' >> /usr/bin/md2pdf \
+RUN printf '#!/bin/bash\nxvfb-run md2resume pdf "$@"' >> /usr/bin/md2pdf \
     && chmod +x /usr/bin/md2pdf
 
 # Enables continously calling a command and piping the output to STDOUT, viewable via docker logs
