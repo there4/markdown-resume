@@ -6,6 +6,9 @@ RUN composer install --no-dev --optimize-autoloader --no-progress --no-suggest
 # Build the actual image
 FROM php
 
+WORKDIR /resume
+CMD ["/bin/bash"]
+
 RUN apt-get update \
 	&& apt-get install -qqy --no-install-recommends\
         # This is for enabling the program to be run with watch
@@ -16,11 +19,15 @@ RUN apt-get update \
         xauth \
 	&& rm -rf /var/lib/apt/lists/*
 
+# Wrap pdf creation in a xvfb-run to enable headless pdf creation in the container
+RUN printf '#!/bin/bash\nexec xvfb-run md2resume pdf "$@"' >> /usr/bin/md2pdf \
+    && chmod +x /usr/bin/md2pdf
+
+# Enables continously calling a command and piping the output to STDOUT, viewable via docker logs
+RUN printf '#!/bin/bash\nwhile sleep 1; do\n    "$@"\ndone' >> /usr/bin/watch-docker \
+    && chmod +x /usr/bin/watch-docker
+
 COPY --from=composer /app/vendor /app/vendor
 COPY . /app
 
 RUN ln -s /app/bin/md2resume /usr/bin/md2resume
-
-RUN echo "alias md2pdf=\"xvfb-run md2resume pdf\"" >> ~/.bashrc
-
-WORKDIR /resume

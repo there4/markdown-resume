@@ -19,12 +19,21 @@ at the [blog post for the project][blog], or look in examples/output to see samp
 
 ### Docker
 
-Run this in the directory where you put your markdown resume:
+Run those commands in the directory where you put your markdown resume.
 
-`docker run -it -v ${PWD}:/resume there4/markdown-resume bash`
+The command for PDF creation works differently in a container, use `md2pdf` instead of the usual command.
 
-In the docker console, you can run `md2resume` on your files.  
-For PDF conversion, run `md2pdf` instead of the usual command.
+#### Oneshot command
+
+This is best suited for use in scripts or in CI environments:
+
+`docker run -v ${PWD}:/resume there4/markdown-resume md2resume [options] command [arguments]`
+
+#### Interactive console
+
+This allows you to enter an interactive console where you can easily experiment and run different commands:
+
+`docker run -it -v ${PWD}:/resume there4/markdown-resume`
 
 ### Local
 
