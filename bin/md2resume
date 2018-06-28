@@ -7,12 +7,10 @@ $cwd = getcwd();
 $templatePath = $baseDir . '/templates';
 $consoleTemplatePath = $baseDir . '/src/Resume/Templates';
 
-// When md2resume is installed with composer, it resides in the a
-// 'markdown-resume' subdirectory of the 'vendor' directory, so we need to
-// walk up a few folders to find 'autoload.php'.
-$autoloadPath = basename($baseDir) === 'markdown-resume'
-              ? realpath($baseDir . '/../../autoload.php')
-              : $baseDir . '/vendor/autoload.php';
+// When md2resume is used as a dependency with composer, it resides in the
+// 'vendor/markdown-resume' directory. This means that the 'autoload.php' is
+// actually much higher in the directory tree than is normally expected.
+$autoloadPath = (strpos($baseDir, 'vendor')) ? realpath($baseDir . '/../../autoload.php') : $baseDir . '/vendor/autoload.php';
 
 // If the dependencies aren't installed, we have to bail and offer some help.
 if (!file_exists($autoloadPath)) {
