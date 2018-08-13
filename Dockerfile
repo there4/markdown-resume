@@ -20,8 +20,8 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/*
 
 # Wrap pdf creation in a xvfb-run to enable headless pdf creation in the container
-RUN printf '#!/bin/bash\nxvfb-run md2resume pdf "$@"' >> /usr/bin/md2pdf \
-    && chmod +x /usr/bin/md2pdf
+RUN echo "#!/bin/bash\nxvfb-run $(which wkhtmltopdf) \"\$@\"" >> /usr/local/bin/wkhtmltopdf \
+    && chmod +x /usr/local/bin/wkhtmltopdf
 
 # Enables continously calling a command and piping the output to STDOUT, viewable via docker logs
 RUN printf '#!/bin/bash\nwhile sleep 1; do\n    "$@"\ndone' >> /usr/bin/watch-docker \
