@@ -21,8 +21,6 @@ at the [blog post for the project][blog], or look in examples/output to see samp
 
 Run those commands in the directory where you put your markdown resume.
 
-The command for PDF creation works differently in a container, use `md2pdf` instead of the usual command.
-
 #### Oneshot command
 
 This is best suited for use in scripts or in CI environments:
