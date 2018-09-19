@@ -35,7 +35,7 @@ This allows you to enter an interactive console where you can easily experiment 
 
 ### Local
 
-1. Clone the repo `git clone git@github.com:there4/markdown-resume.git` or [Download ZIP](https://github.com/there4/markdown-resume/archive/master.zip)
+1. Clone the repo `git clone https://github.com/there4/markdown-resume.git` or [Download ZIP](https://github.com/there4/markdown-resume/archive/master.zip)
 2. **PHP 7** and **[composer](https://getcomposer.org/download/)** are installed and on your PATH
 3. `composer install` inside of the project directory to install dependencies
 
