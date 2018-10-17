@@ -32,6 +32,25 @@ class PdfCommand extends HtmlCommand
                 'Which of the templates to use'
             )
             ->addOption(
+                'htmlonly',
+                'H',
+                InputOption::VALUE_NONE,
+                'Only render interim HTML (don\'t run wkhtmltopdf)'
+            )
+            ->addOption(
+                'keephtml',
+                'k',
+                InputOption::VALUE_NONE,
+                'Keep interim HTML'
+            )
+            ->addOption(
+                'pdfargs',
+                'p',
+                InputOption::VALUE_REQUIRED,
+                'Passthrough arguments for wkhtmltopdf',
+                '--dpi 300 -s Letter'
+            )
+            ->addOption(
                 'output',
                 'o',
                 InputOption::VALUE_REQUIRED,
@@ -48,6 +67,9 @@ class PdfCommand extends HtmlCommand
         $template     = $input->getOption('template');
         $pdfSource    = join(DIRECTORY_SEPARATOR, array($destination, '.tmp_pdf_source.html'));
         $optFilename  = $input->getOption('output');
+        $htmlonly  = $input->getOption('htmlonly');
+        $keephtml  = $input->getOption('keephtml');
+        $pdfargs  = $input->getOption('pdfargs');
 
         $destFilename = join(DIRECTORY_SEPARATOR, array($destination, pathinfo($source, PATHINFO_FILENAME) . '.pdf'));
 
@@ -82,11 +104,24 @@ class PdfCommand extends HtmlCommand
         // Save to a temp destination for the pdf renderer to use
         file_put_contents($pdfSource, $rendered);
 
+        $cmd = "wkhtmltopdf $pdfargs $pdfSource $destFilename";
+        // $output->writeln($cmd);
+
         // Process the document with wkhtmltopdf
-        exec('wkhtmltopdf  --dpi 300 ' . $pdfSource .' ' . $destFilename);
+        if(!$htmlonly)
+            exec($cmd);
 
         // Unlink the temporary file
-        unlink($pdfSource);
+        if(!($htmlonly || $keephtml))
+            unlink($pdfSource);
+        else
+            $output->writeln(
+                sprintf(
+                    "Keeping interim HTML: <info>%s</info>",
+                    $pdfSource
+                ),
+                $this->app->outputFormat
+            );
 
         $output->writeln(
             sprintf(
