@@ -14,7 +14,7 @@ RUN apt-get update \
         # This is for enabling the program to be run with watch
         procps \
         # Required to run PDF generation
-        wget apt-utils libjpeg62-turbo libxrender1 xfonts-75dpi xfonts-base fontconfig \
+        wget apt-utils libjpeg62-turbo libxrender1 xfonts-75dpi xfonts-base fontconfig libxext6 \
     && apt-get autoremove \
 	&& rm -rf /var/lib/apt/lists/*
 
