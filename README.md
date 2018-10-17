@@ -132,7 +132,8 @@ are a more comfortable with html than markdown, you should use it.
 
 ## Changelog
 
-* __2.3.0__ : Add docker support to ease the installation process  [@spawnia](https://github.com/spawnia)
+* __2.3.1__ : Fix embedded images in PDF generation with Docker  [@danielklim](https://github.com/danielklim)
+* __2.3.0__ : Add Docker support to ease the installation process  [@spawnia](https://github.com/spawnia)
 * __2.2.0__ : Dropped phar file distribution, removed Pake and migrated to composer commands
 * __2.1.0__ : Dropped PHP5 support
 * __2.0.12__ : Added new `Roboto` template from [@ejwaibel](https://github.com/ejwaibel)
