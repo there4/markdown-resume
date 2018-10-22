@@ -104,8 +104,8 @@ class PdfCommand extends HtmlCommand
         // Save to a temp destination for the pdf renderer to use
         file_put_contents($pdfSource, $rendered);
 
+        // command that will be invoked to convert html to pdf
         $cmd = "wkhtmltopdf $pdfargs $pdfSource $destFilename";
-        // $output->writeln($cmd);
 
         // Process the document with wkhtmltopdf
         if(!$htmlonly)
