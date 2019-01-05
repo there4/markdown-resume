@@ -51,10 +51,6 @@ body.pdf {
         position: absolute;
     }
 
-    ul li {
-        width: 33.33%;
-        float: left;
-    }
     ul dl {
         margin: 0;
         padding: 0.3em 0 0;

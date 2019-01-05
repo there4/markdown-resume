@@ -94,10 +94,6 @@
         width: 78%;
     }
     
-    ul li {
-        width: 33%;
-        float: left;
-    }
     ul dl {
         dt {
             font-size: 122%;
