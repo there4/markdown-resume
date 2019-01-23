@@ -1,0 +1,36 @@
+.icon {
+	&::before {
+        display: inline-block;
+        font-family: "Font Awesome 5 Free";
+		font-style: normal;
+        font-variant: normal;
+        font-weight: 900;
+		margin-right: 4px;
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	&--email::before {
+		content: "\f0e0";
+    }
+
+	&--github::before {
+        font-family: "Font Awesome 5 Brands";
+        font-weight: 400;
+		content: "\f09b";
+    }
+
+    &--linkedin::before {
+        font-family: "Font Awesome 5 Brands";
+        font-weight: 400;
+        content: "\f0e1";
+   }
+
+    &--location::before {
+        content: "\f3c5";
+   }
+
+	&--phone::before {
+		 content: "\f095";
+	}
+}
