@@ -39,17 +39,15 @@ h1, h2, h3, h4, ul dl dt {
 	}
 }
 
-.summary {
-}
-
 .main {
+	display: flex;
 	margin-top: 1em;
 }
 
-.header,
-.summary,
 .main,
-.footer {
+#header,
+#summary,
+#footer {
 	padding: 0 2em;
 }
 
@@ -62,36 +60,6 @@ a[href$='.pdf'] {
 	position: absolute;
 	top: 15px;
 	right: 25px;
-}
-
-blockquote {
-	align-items: center;
-	border: 2px solid var(--color-gray-60);
-	border-left: 0;
-	border-right: 0;
-	clear: both;
-	display: flex;
-	font-size: 0.75em;
-	justify-content: center;
-	margin: 0;
-	padding: 0;
-	line-height: 1.4em;
-	text-align: center;
-
-	p {
-		align-items: center;
-		display: flex;
-		flex-flow: wrap;
-		justify-content: center;
-		width: 100%;
-	}
-
-	a {
-		color: var(--color-gray-50);
-		display: inline;
-		flex: 0 0 auto;
-		margin: 0 1em;
-	}
 }
 
 hr {
@@ -115,7 +83,7 @@ ul {
 }
 
 h1 {
-	color: rgba(120, 120, 240, .8);
+	color: var(--color-primary);
 	margin: 0;
 	padding: 0;
 	font-size: 3em;
@@ -198,8 +166,6 @@ ol li {
 	padding: 0;
 	border-top: 1px solid #CCCCCC;
 	width: 100%;
-	/*float: left;*/
-	/*list-style: none;*/
 	line-height: 1.5em;
 	font-size: 1em;
 }
@@ -215,7 +181,6 @@ dl {
 	dt {
 		margin: 0;
 		padding: 0;
-		/*font-size: 1.4em;*/
 	}
 	dd {
 		padding: 0;
@@ -232,7 +197,57 @@ dl {
 	}
 }
 
-#experience {
+#contact {
+	blockquote {
+		align-items: center;
+		border: 2px solid var(--color-gray-60);
+		border-left: 0;
+		border-right: 0;
+		clear: both;
+		display: flex;
+		font-size: 0.75em;
+		justify-content: center;
+		margin: 0;
+		padding: 0;
+		line-height: 1.4em;
+		text-align: center;
+
+		p {
+			align-items: center;
+			display: flex;
+			flex-flow: wrap;
+			justify-content: center;
+			width: 100%;
+		}
+
+		a {
+			color: var(--color-gray-50);
+			display: inline;
+			flex: 1 0 50%;
+			// margin: 0 1em;
+		}
+	}
+}
+
+#skills {
+	~ ul {
+		display: flex;
+		flex-flow: wrap;
+		justify-content: space-between;
+		list-style: none;
+		padding: 0;
+
+		li {
+			background-color: var(--color-gray-10);
+			border-radius: 0.5em;
+			margin-bottom: 0.25em;
+			padding: 0.5em;
+		}
+	}
+}
+
+#experience,
+#education {
 	~ dl {
 		dt {
 			margin-top: 0.5em;
@@ -247,7 +262,7 @@ dl {
 			}
 
 			em {
-				color: var(--color-gray-30);
+				color: var(--color-gray-40);
 				font-size: 0.75em;
 			}
 		}
@@ -256,12 +271,12 @@ dl {
 	~ p {
 		font-size: 0.9em;
 		margin-top: 0;
-		width: 85%;
+		width: 90%;
 	}
 
 	~ ul {
 		font-size: 0.9em;
-		width: 85%;
+		width: 90%;
 	}
 
 	~ ol li {
@@ -271,16 +286,6 @@ dl {
 }
 
 #footer {
-	display: none;
-
-	+ p {
-		width: 100%;
-		font-size: 0.8em;
-		text-align: center;
-	}
-}
-
-.footer {
 	border-top: 1px solid var(--color-gray-40);
 	font-size: 0.75em;
 	text-align: center;

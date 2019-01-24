@@ -1,5 +1,6 @@
 body.pdf {
 	color: black;
+	font-size: 20px;
 
 	a {
 		text-decoration: none;
@@ -7,7 +8,7 @@ body.pdf {
 	}
 
 	.container {
-		width: 1080px;
+		width: 1140px;
 		margin: 0 auto;
 		padding: 0;
 		background: none;
@@ -16,8 +17,24 @@ body.pdf {
 	}
 
 	.resume {
-		position:relative;
-		padding: 20px 0;
+		position: relative;
+		padding: 10px 12px;
+	}
+
+	.sidebar {
+		order: 1;
+		width: 30%;
+	}
+
+	.content {
+		width: 70%;
+	}
+
+	.main,
+	#header,
+	#summary,
+	#footer {
+		padding: 0;
 	}
 
 	h1 {
@@ -35,10 +52,43 @@ body.pdf {
 	}
 
 	h3 {
+		// font-size: 2em;
 		font-style: normal;
 
 		+ p {
 
+		}
+	}
+
+	h4 {
+		font-size: 1.5em;
+	}
+
+	#contact {
+		a {
+			color: black;
+			font-size: 1.2em;
+		}
+	}
+
+	#experience {
+		~ dl,
+		~ p,
+		~ ul {
+			page-break-before: avoid;
+		}
+
+		~ p,
+		~ ul {
+			font-size: 1em;
+		}
+
+		~ dl {
+			font-size: 1.1em;
+
+			dd {
+				font-size: 1.25em;
+			}
 		}
 	}
 }
