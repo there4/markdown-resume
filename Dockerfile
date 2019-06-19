@@ -6,6 +6,7 @@ RUN composer install --no-dev --optimize-autoloader --no-progress --no-suggest
 # Build the actual image
 FROM php
 
+ENV LC_ALL C.UTF-8
 WORKDIR /resume
 CMD ["/bin/bash"]
 
