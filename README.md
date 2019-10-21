@@ -168,3 +168,5 @@ are a more comfortable with html than markdown, you should use it.
 [pake]: https://github.com/indeyets/pake/wiki/Installing-Pake
 [wkhtmltopdf]: https://github.com/pdfkit/pdfkit/wiki/Installing-WKHTMLTOPDF
 [console]: http://symfony.com/doc/current/components/console/introduction.html
+
+Please read all the instructions carefully with reference to your operating system. Thanks
