@@ -40,8 +40,16 @@ h1, h2, h3, h4, ul dl dt {
 }
 
 .main {
-	display: flex;
 	margin-top: 1em;
+}
+
+.sidebar {
+	float: right;
+	margin-left: 1.75em;
+	width: 30%;
+}
+
+.content {
 }
 
 .main,
@@ -49,17 +57,6 @@ h1, h2, h3, h4, ul dl dt {
 #summary,
 #footer {
 	padding: 0 2em;
-}
-
-a[href$='.pdf'] {
-	background: #666;
-	color: white;
-	padding: 6px 12px;
-	margin-bottom: 6px;
-	text-decoration: none;
-	position: absolute;
-	top: 15px;
-	right: 25px;
 }
 
 hr {
@@ -90,6 +87,7 @@ h1 {
 	letter-spacing: -1px;
 	font-weight: normal;
 }
+
 h2 {
 	color: #aaa;
 	margin: 0;
@@ -120,7 +118,7 @@ h3~ul {
 }
 
 h4 {
-	font-size: 1.2em;
+	font-size: 1em;
 	margin: 0;
 }
 
@@ -142,11 +140,8 @@ ul dl {
 	margin: .3em 0 0;
 	padding: 0;
 	width: 100%;
-	dt {
-		/*font-size: 1em;*/
-	}
+
 	dd {
-		// margin: 0 0 1em;
 		padding: 0 2em 0 0;
 		font-size: .8em;
 		line-height: 1.5em;
@@ -159,25 +154,27 @@ ol {
 	padding: 0 0 .75em;
 	width: 84%;
 	display: inline-block;
-}
 
-ol li {
-	margin: 0 0 0 .5em;
-	padding: 0;
-	border-top: 1px solid #CCCCCC;
-	width: 100%;
-	line-height: 1.5em;
-	font-size: 1em;
-}
-ol li:nth-child(1) {
-	border-top: 0;
+	li {
+		margin: 0 0 0 .5em;
+		padding: 0;
+		border-top: 1px solid #CCCCCC;
+		width: 100%;
+		line-height: 1.5em;
+		font-size: 1em;
+
+		&:nth-child(1) {
+			border-top: 0;
+		}
+	}
 }
 
 dl {
 	display: inline-block;
-	width: 95%;
 	margin: 0;
 	padding: 0;
+	width: 65%;
+
 	dt {
 		margin: 0;
 		padding: 0;
@@ -224,7 +221,7 @@ dl {
 			color: var(--color-gray-50);
 			display: inline;
 			flex: 1 0 50%;
-			// margin: 0 1em;
+			margin: 0.25em 0;
 		}
 	}
 }
@@ -249,8 +246,14 @@ dl {
 #experience,
 #education {
 	~ dl {
+		margin-bottom: 0.5em;
+
 		dt {
 			margin-top: 0.5em;
+
+			h4 {
+				font-size: 1.4em;
+			}
 		}
 
 		dd {
@@ -269,19 +272,28 @@ dl {
 	}
 
 	~ p {
-		font-size: 0.9em;
+		font-size: 0.95em;
 		margin-top: 0;
-		width: 90%;
 	}
 
 	~ ul {
-		font-size: 0.9em;
-		width: 90%;
+		font-size: 0.95em;
 	}
 
 	~ ol li {
 		border: 0;
 		font-size: 0.9em;
+	}
+}
+
+#experience {
+	~ dl {
+		dd {
+			p {
+				display: flex;
+				justify-content: space-between;
+			}
+		}
 	}
 }
 

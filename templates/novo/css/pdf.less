@@ -1,6 +1,12 @@
+@page {
+	size: auto;
+	margin: 20mm 0 10mm 0;
+}
+
 body.pdf {
 	color: black;
 	font-size: 20px;
+	padding: 1.5em 0.5em;
 
 	a {
 		text-decoration: none;
@@ -19,15 +25,6 @@ body.pdf {
 	.resume {
 		position: relative;
 		padding: 10px 12px;
-	}
-
-	.sidebar {
-		order: 1;
-		width: 30%;
-	}
-
-	.content {
-		width: 70%;
 	}
 
 	.main,
@@ -51,43 +48,49 @@ body.pdf {
 		font-weight: normal;
 	}
 
-	h3 {
-		// font-size: 2em;
-		font-style: normal;
-
-		+ p {
-
-		}
-	}
-
-	h4 {
-		font-size: 1.5em;
-	}
-
 	#contact {
 		a {
 			color: black;
-			font-size: 1.2em;
+			font-size: 1.25em;
+		}
+	}
+
+	#skills {
+		~ h4 {
+			border-bottom: 1px solid var(--color-primary);
+			font-size: 1.1em;
+			margin-bottom: 0.5em;
 		}
 	}
 
 	#experience {
-		~ dl,
 		~ p,
 		~ ul {
+			page-break-after: avoid;
 			page-break-before: avoid;
+			page-break-inside: avoid;
 		}
 
 		~ p,
 		~ ul {
-			font-size: 1em;
+			font-size: 0.98em;
 		}
 
 		~ dl {
-			font-size: 1.1em;
+			font-size: 0.95em;
+			page-break-after: avoid;
+			page-break-before: auto;
+			page-break-inside: avoid;
 
 			dd {
-				font-size: 1.25em;
+				font-size: inherit;
+				page-break-after: avoid;
+				page-break-before: avoid;
+				page-break-inside: avoid;
+
+				p {
+					font-size: 1.05em;
+				}
 			}
 		}
 	}
