@@ -20,8 +20,8 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN cd /root \
-    && wget https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb --no-verbose \
-    && dpkg -i wkhtmltox_0.12.5-1.stretch_amd64.deb
+    && wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.stretch_amd64.deb --no-verbose \
+    && dpkg -i wkhtmltox_0.12.6-1.stretch_amd64.deb
 
 # Enables continously calling a command and piping the output to STDOUT, viewable via docker logs
 RUN printf '#!/bin/bash\nwhile sleep 1; do\n    "$@"\ndone' >> /usr/bin/watch-docker \
@@ -29,5 +29,3 @@ RUN printf '#!/bin/bash\nwhile sleep 1; do\n    "$@"\ndone' >> /usr/bin/watch-do
 
 COPY --from=composer /app/vendor /app/vendor
 COPY . /app
-
-RUN ln -s /app/bin/md2resume /usr/bin/md2resume
