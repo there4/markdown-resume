@@ -49,6 +49,12 @@ class HtmlCommand extends Command
                 'o',
                 InputOption::VALUE_REQUIRED,
                 'The optional override of default filename to output to'
+            )
+            ->addOption(
+                'title',
+                'tt',
+                InputOption::VALUE_REQUIRED,
+                'Which of the title to render.'
             );
     }
 
@@ -61,6 +67,7 @@ class HtmlCommand extends Command
         $template     = $input->getOption('template');
         $refresh      = $input->getOption('refresh');
         $optFilename  = $input->getOption('output');
+        $title        = $input->getOption('title');
         $destFilename = "";
 
         if ($optFilename) {
@@ -69,7 +76,7 @@ class HtmlCommand extends Command
             $destFilename = $destination . DIRECTORY_SEPARATOR . $sourceName . '.html';
         }
 
-        $rendered = $this->generateHtml($source, $template, $refresh);
+        $rendered = $this->generateHtml($source, $template, $refresh, $title);
         file_put_contents($destFilename, $rendered);
         $output->writeln(
             sprintf(
@@ -119,7 +126,7 @@ class HtmlCommand extends Command
         return $collection->dump();
     }
 
-    protected function generateHtml($source, $template, $refresh)
+    protected function generateHtml($source, $template, $refresh, $title)
     {
         // Check that the source file is sane
         if (!file_exists($source)) {
@@ -153,14 +160,6 @@ class HtmlCommand extends Command
         // Process with Markdown, and then use SmartyPants to clean up punctuation.
         $resumeHtml = MarkdownExtra::defaultTransform($resumeContent);
         $resumeHtml = SmartyPants::defaultTransform($resumeHtml);
-
-        // Construct the title for the html document from the h1 and h2 tags
-        $simpleDom = HtmlDomParser::str_get_html($resumeHtml);
-        $title = sprintf(
-            '%s | %s',
-            $simpleDom->find('h1', 0)->innertext,
-            $simpleDom->find('h2', 0)->innertext
-        );
 
         // Render the Markdown into an html file with Mustache Templates
         $m = new \Mustache_Engine;

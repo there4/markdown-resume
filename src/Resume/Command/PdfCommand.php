@@ -92,7 +92,7 @@ class PdfCommand extends HtmlCommand
             return false;
         }
 
-        $rendered = $this->generateHtml($source, $template, false);
+        $rendered = $this->generateHtml($source, $template, false, "");
 
         // The pdf needs some extra css rules, and so we'll add them here
         // to our html document
