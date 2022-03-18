@@ -1,10 +1,10 @@
 # Utilize multi-stage build to keep image size down
-FROM composer as composer
+FROM composer:2.0.4 as composer
 COPY composer.* ./
 RUN composer install --no-dev --optimize-autoloader --no-progress --no-suggest
 
 # Build the actual image
-FROM php
+FROM php:7.1
 
 ENV LC_ALL C.UTF-8
 WORKDIR /resume
