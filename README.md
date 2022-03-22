@@ -87,7 +87,7 @@ Available commands:
 Choose a template with the -t option.
 
 ```bash
-./bin/md2resume html --template blockish examples/source/sample.md examples/output/`
+./bin/md2resume html --template blockish examples/source/sample.md examples/output/
 ```
 
 If you want to edit your markdown resume in your editor while watching it
