@@ -98,7 +98,7 @@ class PdfCommand extends HtmlCommand
         // to our html document
         $simpleDom = HtmlDomParser::str_get_html($rendered);
         $body = $simpleDom->find('body', 0);
-        $body->class = $body->class . ' pdf';
+        $body->setAttribute('class', $body->getAttribute('class') . ' pdf');
         $rendered = (string) $simpleDom;
 
         // Save to a temp destination for the pdf renderer to use
