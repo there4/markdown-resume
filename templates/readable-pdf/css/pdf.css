@@ -9,7 +9,7 @@
 
 .container {
     background: no-repeat url("photo.jpg");
-    background-position-x: right 20px;
-    background-position-y: top 20px;
+    background-position-x: right;
+    background-position-y: top;
     background-size: 16%;
 }

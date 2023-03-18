@@ -6,6 +6,9 @@ RUN composer install --no-dev --optimize-autoloader --no-progress --no-suggest
 # Build the actual image
 FROM php:7.1
 
+ARG WKHTMLTAX_BIN=wkhtmltox_0.12.6-1.buster_arm64.deb
+ARG WKHTMLTAX=https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/${WKHTMLTAX_BIN}
+
 ENV LC_ALL C.UTF-8
 WORKDIR /resume
 CMD ["/bin/bash"]
@@ -20,8 +23,8 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN cd /root \
-    && wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.stretch_amd64.deb --no-verbose \
-    && dpkg -i wkhtmltox_0.12.6-1.stretch_amd64.deb
+    && wget ${WKHTMLTAX} --no-verbose \
+    && dpkg -i ${WKHTMLTAX_BIN}
 
 # Enables continously calling a command and piping the output to STDOUT, viewable via docker logs
 RUN printf '#!/bin/bash\nwhile sleep 1; do\n    "$@"\ndone' >> /usr/bin/watch-docker \
